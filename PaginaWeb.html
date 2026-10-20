@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sofia Muñoz Ruiz · Analista de Datos</title>
+<meta name="description" content="Sofia Muñoz Ruiz — Ingeniera Física y Magíster en Ingeniería. Análisis de datos, Python, SQL, Power BI, estadística y Machine Learning. Medellín, Colombia. Analítica aplicada a decisiones de negocio y al sector financiero." />
+<meta property="og:title" content="Sofia Muñoz Ruiz · Analista de Datos" />
+<meta property="og:description" content="Python · SQL · Power BI · Estadística · Machine Learning. Transformo datos complejos en información útil para decidir." />
+<meta property="og:image" content="img/sofia_web.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg:        #f6f4f0;
+    --surface:   #ffffff;
+    --surface2:  #efece6;
+    --ink:       #13233a;
+    --ink2:      #3b4a5e;
+    --muted:     #6b7686;
+    --line:      rgba(19,35,58,0.10);
+    --navy:      #1d3c5e;
+    --navy-2:    #2b5683;
+    --accent:    #b8592a;   /* terracota */
+    --accent-2:  #d9774a;
+    --teal:      #1f7a74;
+    --gold:      #b7871f;
+    --chip-bg:   rgba(29,60,94,0.07);
+    --shadow:    0 1px 2px rgba(19,35,58,.06), 0 8px 28px rgba(19,35,58,.07);
+    --shadow-lg: 0 24px 60px rgba(19,35,58,.14);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans:  'Inter', 'Segoe UI', system-ui, sans-serif;
+    --mono:  'JetBrains Mono', Consolas, monospace;
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e1622; --surface: #152132; --surface2: #1b2a3f; --ink: #e9eef5; --ink2: #c3cddb;
+      --muted: #8e9bb0; --line: rgba(233,238,245,0.10); --navy: #8fb6e3; --navy-2: #b3cff0;
+      --accent: #e8875a; --accent-2: #f0a27c; --teal: #5cc2b9; --gold: #e2b54c;
+      --chip-bg: rgba(143,182,227,0.10); --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.25);
+      --shadow-lg: 0 24px 60px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e1622; --surface: #152132; --surface2: #1b2a3f; --ink: #e9eef5; --ink2: #c3cddb;
+    --muted: #8e9bb0; --line: rgba(233,238,245,0.10); --navy: #8fb6e3; --navy-2: #b3cff0;
+    --accent: #e8875a; --accent-2: #f0a27c; --teal: #5cc2b9; --gold: #e2b54c;
+    --chip-bg: rgba(143,182,227,0.10); --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.25);
+    --shadow-lg: 0 24px 60px rgba(0,0,0,.45);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.65; overflow-x: hidden; transition: background .3s, color .3s; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .wrap { width: min(1140px, calc(100% - 32px)); margin: 0 auto; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 100;
+    background: color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-in { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 66px; }
+  .logo { font-family: var(--serif); font-size: 1.35rem; text-decoration: none; color: var(--navy); white-space: nowrap; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 1.6rem; list-style: none; }
+  .nav-links a { font-size: .86rem; font-weight: 500; color: var(--ink2); text-decoration: none; position: relative; }
+  .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -4px; height: 2px; width: 0; background: var(--accent); transition: width .25s; }
+  .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+  .nav-actions { display: flex; align-items: center; gap: .6rem; }
+  .icon-btn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); display: grid; place-items: center; cursor: pointer; text-decoration: none; transition: transform .2s; }
+  .icon-btn:hover { transform: translateY(-2px); }
+  .icon-btn svg { width: 18px; height: 18px; }
+  .menu-btn { display: none; }
+
+  /* ── BUTTONS ── */
+  .btn { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; font-size: .92rem; padding: .78rem 1.3rem; border-radius: 999px; text-decoration: none; transition: transform .2s, box-shadow .2s, background .2s; border: 1.5px solid transparent; cursor: pointer; font-family: var(--sans); }
+  .btn svg { width: 17px; height: 17px; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 35%, transparent); }
+  .btn-ghost { border-color: var(--navy); color: var(--navy); }
+  .btn-ghost:hover { background: var(--chip-bg); transform: translateY(-2px); }
+  .btn-sm { padding: .5rem 1rem; font-size: .82rem; }
+
+  /* ── HERO ── */
+  #inicio { padding: 120px 0 60px; position: relative; overflow: hidden; }
+  #inicio::before { content: ''; position: absolute; width: 640px; height: 640px; right: -180px; top: -120px; border-radius: 50%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent) 16%, transparent), transparent 65%); pointer-events: none; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 3.5rem; align-items: center; position: relative; }
+  .eyebrow { font-family: var(--mono); font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); display: inline-flex; align-items: center; gap: .6rem; margin-bottom: 1.2rem; }
+  .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 0 var(--teal); animation: pulse 2s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--teal) 60%, transparent); } 70% { box-shadow: 0 0 0 10px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.6rem, 5.6vw, 4.4rem); line-height: 1.05; letter-spacing: -.01em; color: var(--ink); margin-bottom: 1.2rem; }
+  h1 em { font-style: italic; color: var(--accent); }
+  .hero-name { font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: .3rem; }
+  .hero-role { color: var(--muted); font-size: .95rem; margin-bottom: 1.4rem; }
+  .typed { font-family: var(--mono); color: var(--teal); }
+  .typed::after { content: '▍'; animation: blink 1s steps(1) infinite; margin-left: 2px; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .hero-bio { color: var(--ink2); max-width: 560px; margin-bottom: 2rem; font-size: 1.03rem; }
+  .hero-btns { display: flex; flex-wrap: wrap; gap: .8rem; margin-bottom: 1.8rem; }
+  .socials { display: flex; gap: .6rem; flex-wrap: wrap; }
+  .social { display: inline-flex; align-items: center; gap: .45rem; padding: .45rem .85rem; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: .82rem; font-weight: 500; text-decoration: none; color: var(--ink2); transition: border-color .2s, color .2s; }
+  .social:hover { border-color: var(--accent); color: var(--accent); }
+  .social svg { width: 16px; height: 16px; }
+
+  .photo-card { position: relative; justify-self: center; width: min(400px, 100%); }
+  .photo-frame { position: relative; aspect-ratio: 4/5; border-radius: 200px 200px 24px 24px; overflow: hidden;
+    background: linear-gradient(180deg, #f3ede5 0%, #e9ddd0 100%); box-shadow: var(--shadow-lg); }
+  .photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 12%; mix-blend-mode: multiply; }
+  .photo-ring { position: absolute; inset: -14px; border-radius: 214px 214px 34px 34px; border: 1.5px dashed color-mix(in srgb, var(--accent) 55%, transparent); pointer-events: none; }
+  .float-chip { position: absolute; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: .65rem .9rem; box-shadow: var(--shadow); font-size: .78rem; display: flex; align-items: center; gap: .6rem; animation: float 6s ease-in-out infinite; }
+  .float-chip b { display: block; font-size: 1.05rem; color: var(--ink); font-family: var(--mono); line-height: 1.1; }
+  .float-chip small { color: var(--muted); }
+  .float-chip .ic { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-size: 1rem; flex-shrink: 0; }
+  .chip-a { top: 14%; left: -12%; }
+  .chip-b { bottom: 18%; right: -10%; animation-delay: -3s; }
+  .chip-c { bottom: -4%; left: 4%; animation-delay: -1.5s; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+  /* ── KPI STRIP ── */
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-top: 64px; }
+  .kpi { background: var(--surface); padding: 1.4rem 1.5rem; }
+  .kpi-val { font-family: var(--serif); font-size: 2.4rem; line-height: 1; color: var(--navy); }
+  .kpi-val sup { font-size: 1.1rem; color: var(--accent); }
+  .kpi-label { font-size: .84rem; color: var(--muted); margin-top: .4rem; }
+
+  /* ── SECTIONS ── */
+  section.block { padding: 90px 0; }
+  .alt { background: var(--surface2); }
+  .sec-head { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 2.6rem; max-width: 680px; }
+  .sec-kicker { font-family: var(--mono); font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.1; color: var(--ink); }
+  .sec-head p { color: var(--ink2); }
+  h3 { font-size: 1.08rem; font-weight: 650; color: var(--ink); line-height: 1.35; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } * { animation: none !important; } }
+
+  /* ── ABOUT ── */
+  .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 3rem; align-items: start; }
+  .about-text p { color: var(--ink2); margin-bottom: 1rem; }
+  .about-text strong { color: var(--ink); }
+  .soft-list { display: grid; gap: .7rem; }
+  .soft { display: flex; gap: .8rem; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: .85rem 1rem; font-size: .92rem; color: var(--ink2); }
+  .soft span { font-size: 1.15rem; line-height: 1.3; }
+
+  /* ── PIPELINE ── */
+  .pipeline { display: grid; grid-template-columns: repeat(6, 1fr); gap: .8rem; counter-reset: step; }
+  .step { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.2rem 1rem; box-shadow: var(--shadow); transition: transform .25s, border-color .25s; }
+  .step:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .step::before { counter-increment: step; content: '0' counter(step); font-family: var(--mono); font-size: .72rem; color: var(--accent); font-weight: 600; }
+  .step:not(:last-child)::after { content: '→'; position: absolute; right: -.75rem; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: .9rem; z-index: 1; }
+  .step h3 { font-size: .98rem; margin: .35rem 0 .4rem; }
+  .step p { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+  .step .tools { font-family: var(--mono); font-size: .68rem; color: var(--teal); margin-top: .6rem; }
+
+  /* ── SKILLS ── */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .skill-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.4rem; box-shadow: var(--shadow); }
+  .skill-card .ic { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; font-size: 1.2rem; margin-bottom: .9rem; }
+  .skill-card h3 { margin-bottom: .3rem; }
+  .skill-card p { font-size: .86rem; color: var(--muted); margin-bottom: .9rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .chip { font-family: var(--mono); font-size: .72rem; padding: .28rem .6rem; border-radius: 6px; background: var(--chip-bg); color: var(--navy); border: 1px solid var(--line); }
+  .ic-1 { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+  .ic-2 { background: color-mix(in srgb, var(--teal) 15%, transparent); }
+  .ic-3 { background: color-mix(in srgb, var(--navy) 14%, transparent); }
+  .ic-4 { background: color-mix(in srgb, var(--gold) 16%, transparent); }
+
+  /* ── PROJECTS ── */
+  .filters { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.8rem; }
+  .filter { font-family: var(--sans); font-size: .84rem; font-weight: 500; padding: .45rem 1rem; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink2); cursor: pointer; transition: all .2s; }
+  .filter:hover { border-color: var(--navy); }
+  .filter.on { background: var(--navy); color: var(--bg); border-color: var(--navy); }
+  .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+  .proj { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s; }
+  .proj:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .proj.hide { display: none; }
+  .proj.featured { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; }
+  .proj-vis { background: var(--surface2); border-bottom: 1px solid var(--line); padding: 1rem; min-height: 140px; position: relative; }
+  .proj.featured .proj-vis { border-bottom: none; border-right: 1px solid var(--line); }
+  .vis-label { font-family: var(--mono); font-size: .68rem; letter-spacing: .08em; color: var(--muted); display: flex; justify-content: space-between; margin-bottom: .4rem; }
+  .vis-label b { color: var(--teal); }
+  .eeg-canvas { width: 100%; height: 260px; display: block; }
+  .proj-body { padding: 1.4rem; display: flex; flex-direction: column; gap: .7rem; flex: 1; }
+  .proj-meta { font-family: var(--mono); font-size: .7rem; color: var(--accent); letter-spacing: .06em; text-transform: uppercase; }
+  .proj-body > p { font-size: .9rem; color: var(--ink2); }
+  .case { display: grid; gap: .45rem; font-size: .86rem; color: var(--ink2); border-left: 2px solid var(--line); padding-left: .9rem; }
+  .case b { color: var(--ink); font-weight: 600; }
+  .proj-foot { display: flex; justify-content: space-between; align-items: center; gap: .6rem; flex-wrap: wrap; margin-top: auto; padding-top: .6rem; }
+  .repo-link { display: inline-flex; align-items: center; gap: .4rem; font-size: .84rem; font-weight: 600; color: var(--navy); text-decoration: none; }
+  .repo-link:hover { color: var(--accent); }
+  .repo-link svg { width: 16px; height: 16px; }
+  .status { font-family: var(--mono); font-size: .66rem; padding: .2rem .55rem; border-radius: 999px; background: color-mix(in srgb, var(--gold) 16%, transparent); color: var(--gold); }
+
+  /* mini ER diagram */
+  .er { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; align-items: start; }
+  .tbl { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; font-family: var(--mono); font-size: .64rem; overflow: hidden; }
+  .tbl div { padding: .25rem .5rem; border-top: 1px solid var(--line); color: var(--ink2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tbl .th { background: var(--navy); color: var(--bg); border-top: 0; font-weight: 600; }
+  .tbl .pk::before { content: '🔑 '; }
+  .tbl .fk { color: var(--accent); }
+  .sql { margin-top: .7rem; background: #0f1a2a; color: #d6e2f0; border-radius: 8px; padding: .8rem .9rem; font-family: var(--mono); font-size: .68rem; line-height: 1.6; overflow-x: auto; white-space: pre; }
+  .sql .k { color: #f0a27c; } .sql .f { color: #7fd1c9; } .sql .c { color: #7f8ea3; }
+
+  /* mini bar visual for BI card */
+  .bars { display: flex; align-items: flex-end; gap: 6px; height: 96px; }
+  .bars i { flex: 1; border-radius: 4px 4px 0 0; background: var(--navy); opacity: .85; transform-origin: bottom; transform: scaleY(0); transition: transform .9s cubic-bezier(.2,.8,.2,1); }
+  .bars i:nth-child(3n) { background: var(--accent); }
+  .visible .bars i { transform: scaleY(1); }
+  .scatter { width: 100%; height: 110px; }
+
+  .proj.featured .scatter { height: 250px; }
+  .proj:not(.featured) .eeg-canvas { height: 190px; }
+
+  /* ── VALUE / APORTE ── */
+  .value-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .value { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.4rem; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: .6rem; border-top: 3px solid var(--accent); }
+  .value:nth-child(2) { border-top-color: var(--teal); } .value:nth-child(3) { border-top-color: var(--navy); } .value:nth-child(4) { border-top-color: var(--gold); }
+  .value .ic { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; font-size: 1.1rem; }
+  .value h3 { font-size: 1rem; }
+  .value p { font-size: .86rem; color: var(--ink2); }
+  .value .proof { margin-top: auto; font-size: .78rem; color: var(--muted); border-top: 1px dashed var(--line); padding-top: .6rem; }
+  .value .proof b { color: var(--ink); font-weight: 600; }
+
+  /* ── DEMO DASHBOARD ── */
+  .demo { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow-lg); overflow: hidden; }
+  .demo-bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; padding: .9rem 1.2rem; border-bottom: 1px solid var(--line); background: var(--surface2); }
+  .demo-bar .dots { display: flex; gap: 6px; } .demo-bar .dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+  .demo-title { font-family: var(--mono); font-size: .74rem; color: var(--muted); letter-spacing: .04em; }
+  .synthetic { font-family: var(--mono); font-size: .66rem; padding: .22rem .6rem; border-radius: 999px; background: color-mix(in srgb, var(--gold) 16%, transparent); color: var(--gold); }
+  .demo-body { padding: 1.3rem; display: grid; gap: 1.2rem; }
+  .seg-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+  .seg-row > span { font-size: .8rem; color: var(--muted); margin-right: .3rem; }
+  .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; }
+  .tile { border: 1px solid var(--line); border-radius: 12px; padding: .9rem 1rem; }
+  .tile small { display: block; font-size: .74rem; color: var(--muted); }
+  .tile b { font-family: var(--serif); font-weight: 400; font-size: 1.75rem; line-height: 1.15; color: var(--ink); }
+  .demo-body > *, .demo-main > *, .tiles > * { min-width: 0; }
+  .demo-body { min-width: 0; }
+  .demo-main { display: grid; grid-template-columns: 1.15fr .85fr; gap: 1.2rem; }
+  .chart-box { border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.1rem; position: relative; }
+  .chart-head { display: flex; justify-content: space-between; align-items: baseline; gap: .6rem; margin-bottom: .8rem; }
+  .chart-head h3 { font-size: .92rem; }
+  .linkish { background: none; border: 0; font: inherit; font-size: .76rem; color: var(--navy); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+  .hbar { display: grid; grid-template-columns: 92px 1fr 64px; align-items: center; gap: .6rem; padding: .32rem .2rem; border-radius: 6px; }
+  .hbar:hover { background: var(--chip-bg); }
+  .hbar span:first-child { font-size: .82rem; color: var(--ink2); }
+  .hbar .track { height: 16px; position: relative; border-left: 1px solid var(--line); }
+  .hbar .fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--navy); border-radius: 0 4px 4px 0; transition: width .6s cubic-bezier(.2,.8,.2,1); }
+  .hbar.top .fill { background: var(--accent); }
+  .hbar span:last-child { font-family: var(--mono); font-size: .76rem; color: var(--ink); text-align: right; }
+  .tip { position: absolute; left: 0; top: 0; pointer-events: none; background: var(--ink); color: var(--bg); font-size: .76rem; padding: .45rem .65rem; border-radius: 8px; box-shadow: var(--shadow); opacity: 0; transition: opacity .15s; white-space: nowrap; z-index: 2; }
+  .tip b { font-family: var(--mono); }
+  .data-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+  .data-table th, .data-table td { text-align: left; padding: .35rem .3rem; border-bottom: 1px solid var(--line); color: var(--ink2); }
+  .data-table td:not(:first-child), .data-table th:not(:first-child) { text-align: right; font-family: var(--mono); }
+  .insight { margin-top: .9rem; font-size: .86rem; color: var(--ink2); background: color-mix(in srgb, var(--teal) 9%, transparent); border-radius: 10px; padding: .7rem .9rem; }
+  .insight b { color: var(--ink); }
+  .demo-note { font-size: .78rem; color: var(--muted); }
+
+  /* ── GITHUB LIVE ── */
+  .gh-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+  .gh-user { display: flex; align-items: center; gap: .9rem; }
+  .gh-user img { width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--line); background: var(--surface2); }
+  .gh-user b { display: block; }
+  .gh-user small { color: var(--muted); font-family: var(--mono); font-size: .76rem; }
+  .gh-langs { display: flex; height: 10px; border-radius: 999px; overflow: hidden; background: var(--surface2); margin: .4rem 0 .6rem; }
+  .gh-legend { display: flex; flex-wrap: wrap; gap: .9rem; font-size: .76rem; color: var(--muted); margin-bottom: 1.4rem; }
+  .gh-legend i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: .35rem; }
+  .repo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; }
+  .repo { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.1rem; text-decoration: none; display: flex; flex-direction: column; gap: .4rem; transition: border-color .2s, transform .2s; }
+  .repo:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .repo b { font-size: .9rem; color: var(--navy); word-break: break-word; }
+  .repo p { font-size: .8rem; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .repo small { font-family: var(--mono); font-size: .7rem; color: var(--ink2); margin-top: auto; display: flex; gap: .8rem; align-items: center; }
+  .repo small i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: .3rem; }
+
+  /* ── TIMELINE ── */
+  .tl-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 3rem; }
+  .col-title { font-family: var(--mono); font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; }
+  .timeline { position: relative; padding-left: 1.6rem; }
+  .timeline::before { content: ''; position: absolute; left: 5px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+  .tl { position: relative; margin-bottom: 1.8rem; }
+  .tl::before { content: ''; position: absolute; left: -1.6rem; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2.5px solid var(--accent); }
+  .tl-date { font-family: var(--mono); font-size: .74rem; color: var(--accent); }
+  .tl h3 { margin: .15rem 0 .1rem; }
+  .tl-place { font-size: .86rem; color: var(--navy); font-weight: 500; margin-bottom: .4rem; }
+  .tl ul { padding-left: 1.1rem; color: var(--ink2); font-size: .88rem; display: grid; gap: .25rem; }
+  .edu-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.2rem 1.3rem; margin-bottom: 1rem; box-shadow: var(--shadow); }
+  .edu-card .tl-date { display: block; }
+  .edu-card p { font-size: .86rem; color: var(--ink2); margin-top: .35rem; }
+  .courses { display: grid; gap: .45rem; margin-top: .6rem; }
+  .course { display: flex; justify-content: space-between; gap: .8rem; font-size: .84rem; color: var(--ink2); border-bottom: 1px dashed var(--line); padding-bottom: .4rem; }
+  .course span:last-child { font-family: var(--mono); font-size: .7rem; color: var(--muted); white-space: nowrap; }
+  .lang-row { display: grid; grid-template-columns: 90px 1fr 70px; align-items: center; gap: .7rem; font-size: .85rem; margin-top: .6rem; }
+  .meter { height: 6px; border-radius: 999px; background: var(--surface2); overflow: hidden; }
+  .meter i { display: block; height: 100%; background: var(--teal); border-radius: 999px; }
+  .lang-row small { font-family: var(--mono); font-size: .7rem; color: var(--muted); }
+
+  /* ── PUBLICATIONS & AWARDS ── */
+  .pub-awards { display: grid; grid-template-columns: 1.2fr .8fr; gap: 3rem; }
+  .pub { display: grid; grid-template-columns: 58px 1fr; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
+  .pub:first-of-type { padding-top: 0; }
+  .pub-year { font-family: var(--serif); font-size: 1.5rem; color: var(--accent); line-height: 1; }
+  .pub h3 { font-size: .96rem; margin-bottom: .25rem; }
+  .pub p { font-size: .8rem; color: var(--muted); }
+  .pub a { font-family: var(--mono); font-size: .72rem; color: var(--teal); text-decoration: none; }
+  .pub a:hover { text-decoration: underline; }
+  .award { display: flex; gap: .9rem; padding: .95rem 1rem; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; margin-bottom: .7rem; }
+  .award span { font-size: 1.3rem; }
+  .award b { font-size: .9rem; display: block; color: var(--ink); line-height: 1.35; }
+  .award small { font-size: .76rem; color: var(--muted); }
+
+  /* ── GALLERY ── */
+  .gallery { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: 220px 220px; gap: .8rem; }
+  .g-item { position: relative; border-radius: 12px; overflow: hidden; background: var(--surface2); }
+  .g-item:first-child { grid-row: span 2; }
+  .g-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+  .g-item:hover img { transform: scale(1.05); }
+  .g-item figcaption { position: absolute; inset: auto 0 0 0; padding: 2rem .9rem .7rem; font-size: .78rem; color: #fff; background: linear-gradient(transparent, rgba(10,18,30,.82)); }
+
+  /* ── CONTACT ── */
+  .contact-box { background: var(--navy); color: #fff; border-radius: 24px; padding: clamp(1.6rem, 4vw, 3rem); display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; position: relative; overflow: hidden; }
+  :root[data-theme="dark"] .contact-box { background: #1b3352; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .contact-box { background: #1b3352; } }
+  .contact-box h2 { color: #fff; }
+  .contact-box > div > p { color: rgba(255,255,255,.78); margin: .8rem 0 1.4rem; }
+  .c-links { display: grid; gap: .6rem; }
+  .c-link { display: flex; align-items: center; gap: .7rem; color: #fff; text-decoration: none; font-size: .92rem; padding: .7rem .9rem; border-radius: 10px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); transition: background .2s; word-break: break-all; }
+  .c-link:hover { background: rgba(255,255,255,.14); }
+  .c-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+  form { display: grid; gap: .9rem; }
+  label { font-size: .78rem; font-weight: 600; color: rgba(255,255,255,.8); display: block; margin-bottom: .3rem; }
+  input, textarea { width: 100%; font: inherit; font-size: .92rem; padding: .75rem .9rem; border-radius: 10px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06); color: #fff; resize: vertical; }
+  input::placeholder, textarea::placeholder { color: rgba(255,255,255,.45); }
+  input:focus, textarea:focus { outline: none; border-color: var(--accent-2); background: rgba(255,255,255,.1); }
+  .contact-box .btn-primary { background: #d9774a; }
+
+  footer { padding: 2.2rem 0; color: var(--muted); font-size: .82rem; }
+  .foot-in { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  footer a { color: var(--navy); }
+
+  .to-top { position: fixed; right: 18px; bottom: 18px; z-index: 90; opacity: 0; pointer-events: none; transition: opacity .3s; box-shadow: var(--shadow); }
+  .to-top.show { opacity: 1; pointer-events: auto; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1000px) {
+    .value-grid, .tiles { grid-template-columns: repeat(2, 1fr); }
+    .demo-main { grid-template-columns: 1fr; }
+    .pipeline { grid-template-columns: repeat(3, 1fr); }
+    .step:nth-child(3)::after { display: none; }
+    .skills-grid, .repo-grid { grid-template-columns: repeat(2, 1fr); }
+    .chip-a { left: -4%; } .chip-b { right: -4%; }
+  }
+  @media (max-width: 860px) {
+    .nav-links { display: none; position: absolute; top: 66px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--bg); border-bottom: 1px solid var(--line); padding: .5rem 16px 1rem; }
+    .nav-links.open { display: flex; }
+    .nav-links a { display: block; padding: .7rem 0; font-size: 1rem; }
+    .menu-btn { display: grid; }
+    .nav-cv { display: none; }
+    .hero-grid, .about-grid, .tl-grid, .pub-awards, .contact-box { grid-template-columns: 1fr; }
+    .photo-card { order: -1; width: min(320px, 82%); margin-bottom: 1.5rem; }
+    .kpis { grid-template-columns: repeat(2, 1fr); }
+    .proj-grid { grid-template-columns: 1fr; }
+    .proj.featured { grid-column: auto; grid-template-columns: 1fr; }
+    .proj.featured .proj-vis { border-right: none; border-bottom: 1px solid var(--line); }
+    .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 240px 170px 170px; }
+    .g-item:first-child { grid-column: span 2; grid-row: auto; }
+    section.block { padding: 70px 0; }
+  }
+  @media (max-width: 560px) {
+    .pipeline, .skills-grid, .repo-grid, .value-grid { grid-template-columns: 1fr; }
+    .tile b { font-size: 1.3rem; } .tile { padding: .7rem .8rem; } .demo-body { padding: 1rem; }
+    .hbar { grid-template-columns: 84px 1fr 52px; }
+    .proj.featured .scatter { height: 170px; }
+    .step::after { display: none; }
+    .chip-a { left: -6%; top: 8%; } .chip-b { right: -6%; } .chip-c { display: none; }
+    .float-chip { padding: .5rem .7rem; } .float-chip b { font-size: .92rem; }
+    .kpi { padding: 1.1rem; } .kpi-val { font-size: 2rem; }
+    .eeg-canvas { height: 220px; }
+    .er { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SVG icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-gh" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M3 6.5h18v11H3z M3 7l9 6.5L21 7"/></symbol>
+  <symbol id="i-orcid" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="currentColor" d="M8.2 9.6h1.5v7H8.2zM9 6.9a.95.95 0 1 1 0 1.9.95.95 0 0 1 0-1.9Zm2.6 2.7h2.6c2.4 0 3.6 1.7 3.6 3.5 0 1.9-1.4 3.5-3.6 3.5h-2.6zm1.5 1.3v4.4h1c1.5 0 2.2-1 2.2-2.2s-.7-2.2-2.2-2.2z"/></symbol>
+  <symbol id="i-dl" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0-6 6m6-6 6 6"/></symbol>
+</svg>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo" href="#inicio">Sofia<span>.</span>data</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#aporte">Qué aporto</a></li>
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#habilidades">Habilidades</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#experiencia">Experiencia</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a class="btn btn-primary btn-sm nav-cv" href="CV.pdf" download="CV_Sofia_Munoz_Ruiz.pdf"><svg><use href="#i-dl"/></svg>CV</a>
+      <button class="icon-btn" id="themeBtn" aria-label="Cambiar tema"><svg><use href="#i-moon"/></svg></button>
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false"><svg><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="inicio">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>Analista de Datos · Disponible · Medellín</div>
+        <h1>Datos bien hechos, <em>decisiones mejor tomadas.</em></h1>
+        <p class="hero-name">Sofia Muñoz Ruiz</p>
+        <p class="hero-role">Ingeniera Física · Magíster en Ingeniería · <span class="typed" id="typed">Analista de Datos</span></p>
+        <p class="hero-bio">
+          Soy analista de datos con base en <strong>estadística, SQL, Python y Power BI</strong>. Integro y limpio datos,
+          construyo indicadores y modelos predictivos validados con rigor, y los traduzco en tableros y mensajes claros
+          para que las áreas de negocio decidan con evidencia. Quiero llevar esa disciplina al <strong>sector financiero</strong>.
+        </p>
+        <div class="hero-btns">
+          <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
+          <a class="btn btn-ghost" href="CV.pdf" download="CV_Sofia_Munoz_Ruiz.pdf"><svg><use href="#i-dl"/></svg>Descargar CV</a>
+        </div>
+        <div class="socials">
+          <a class="social" href="https://github.com/SofiaMunozRuiz" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>GitHub</a>
+          <a class="social" href="https://orcid.org/0000-0003-3295-9139" target="_blank" rel="noopener"><svg><use href="#i-orcid"/></svg>ORCID</a>
+          <a class="social" href="mailto:msofia.munozr16@gmail.com"><svg><use href="#i-mail"/></svg>Email</a>
+        </div>
+      </div>
+
+      <div class="photo-card">
+        <div class="photo-ring"></div>
+        <div class="photo-frame">
+          <img src="img/sofia_web.jpg" alt="Foto de Sofia Muñoz Ruiz" width="900" height="1100" />
+        </div>
+        <div class="float-chip chip-a"><div class="ic ic-1">🗄️</div><div><b>SQL</b><small>MySQL · modelo relacional</small></div></div>
+        <div class="float-chip chip-b"><div class="ic ic-4">📊</div><div><b>Power BI</b><small>KPIs · dashboards</small></div></div>
+        <div class="float-chip chip-c"><div class="ic ic-2">🐍</div><div><b>Python</b><small>Pandas · Scikit-learn</small></div></div>
+      </div>
+    </div>
+
+    <div class="kpis reveal">
+      <div class="kpi"><div class="kpi-val" data-count="605">0</div><div class="kpi-label">registros de pacientes integrados y analizados</div></div>
+      <div class="kpi"><div class="kpi-val"><span data-count="4">0</span></div><div class="kpi-label">algoritmos de clasificación comparados (SVM, XGBoost, RF, redes)</div></div>
+      <div class="kpi"><div class="kpi-val"><span data-count="4">0</span></div><div class="kpi-label">cursos técnicos dictados como instructora</div></div>
+      <div class="kpi"><div class="kpi-val"><span data-count="9" id="kpiRepos">0</span></div><div class="kpi-label">repositorios públicos en GitHub</div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ABOUT -->
+<section class="block" id="sobre-mi">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-kicker">01 · Sobre mí</span>
+      <h2>Rigor científico al servicio del negocio</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Soy <strong>Ingeniera Física</strong> (Universidad del Cauca) y <strong>Magíster en Ingeniería</strong> (Universidad de Antioquia, título en proceso). La física me enseñó a plantear bien un problema antes de resolverlo; la estadística, a no confiar en un resultado hasta validarlo.</p>
+        <p>He recorrido el <strong>ciclo completo del dato</strong> con datos reales: extraje y depuré registros de 605 pacientes, integré métricas de desempeño con datos demográficos, diseñé una <strong>base de datos relacional en MySQL</strong> y construí <strong>modelos de clasificación</strong> con validación estricta para evitar fuga de información, un cuidado que también es clave en modelos de riesgo o de fraude.</p>
+        <p>También enseño Python, Machine Learning y Git en la Universidad de Antioquia. Explicar lo técnico de forma sencilla es parte de mi trabajo diario, y es justo lo que necesita un equipo de negocio que quiere entender sus datos.</p>
+        <p><strong>¿Por qué el sector financiero?</strong> Porque combina lo que más me motiva: grandes volúmenes de datos, preguntas con impacto real en las personas y la exigencia de que cada modelo sea preciso, explicable y responsable.</p>
+      </div>
+      <div class="soft-list">
+        <div class="soft"><span>🧭</span>Pensamiento analítico y estratégico para problemas complejos</div>
+        <div class="soft"><span>🗣️</span>Comunicación clara, oral y escrita, de resultados técnicos</div>
+        <div class="soft"><span>🤝</span>Trabajo en equipos interdisciplinarios (medicina, IA, ingeniería)</div>
+        <div class="soft"><span>⏱️</span>Organización y manejo del tiempo orientado a resultados</div>
+        <div class="soft"><span>🎯</span>Toma de decisiones informadas bajo presión</div>
+        <div class="soft"><span>🌱</span>Liderazgo en entornos académicos y de investigación</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE -->
+<section class="block alt" id="aporte">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-kicker">02 · Qué aporto</span>
+      <h2>Cómo mis habilidades se traducen en banca</h2>
+      <p>Lo que ya hice con datos reales en investigación aplica de forma directa a los retos analíticos de una entidad financiera.</p>
+    </div>
+    <div class="value-grid">
+      <div class="value"><div class="ic ic-1">📊</div>
+        <h3>Reportería e indicadores</h3>
+        <p>KPIs, tableros en Power BI y reportes que responden preguntas de negocio sin ambigüedad.</p>
+        <div class="proof"><b>Base:</b> dashboards y modelos de datos en Power BI; visualización en Python.</div></div>
+      <div class="value"><div class="ic ic-2">👥</div>
+        <h3>Analítica de clientes</h3>
+        <p>Segmentación y perfilamiento con clustering y PCA para entender comportamientos y priorizar acciones.</p>
+        <div class="proof"><b>Base:</b> estadística multivariada en R; comparación de grupos con pruebas de hipótesis.</div></div>
+      <div class="value"><div class="ic ic-3">🛡️</div>
+        <h3>Modelos de riesgo y fraude</h3>
+        <p>Clasificación con validación sin fuga de información y modelos explicables, como exige un entorno regulado.</p>
+        <div class="proof"><b>Base:</b> SVM, XGBoost, Random Forest y redes neuronales; técnicas de IA explicable.</div></div>
+      <div class="value"><div class="ic ic-4">🗄️</div>
+        <h3>Calidad y gobierno del dato</h3>
+        <p>Modelado relacional, seudonimización, control de faltantes y atípicos, y documentación trazable.</p>
+        <div class="proof"><b>Base:</b> base de datos MySQL en desarrollo; estándar BIDS; metodología CRISP-DM.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="block" id="demo">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-kicker">03 · Demo interactiva</span>
+      <h2>Un tablero, de la consulta al hallazgo</h2>
+      <p>Así trabajo: una consulta SQL, una visualización y una conclusión accionable. Elige un segmento y mira cómo cambia todo.</p>
+    </div>
+    <div class="demo">
+      <div class="demo-bar">
+        <div style="display:flex;align-items:center;gap:.8rem"><span class="dots"><i></i><i></i><i></i></span><span class="demo-title">tablero_canales · vista de análisis</span></div>
+        <span class="synthetic">⚠ Datos sintéticos de ejemplo</span>
+      </div>
+      <div class="demo-body">
+        <div class="seg-row" role="group" aria-label="Segmento de clientes"><span>Segmento:</span>
+          <button class="filter on" data-seg="todos">Todos</button>
+          <button class="filter" data-seg="jovenes">Jóvenes digitales</button>
+          <button class="filter" data-seg="familias">Familias</button>
+          <button class="filter" data-seg="pymes">Pymes</button>
+          <button class="filter" data-seg="senior">Senior</button>
+        </div>
+        <div class="tiles">
+          <div class="tile"><small>Clientes</small><b id="tClientes">–</b></div>
+          <div class="tile"><small>Transacciones / mes</small><b id="tTx">–</b></div>
+          <div class="tile"><small>Participación digital</small><b id="tDig">–</b></div>
+          <div class="tile"><small>Ticket promedio</small><b id="tTicket">–</b></div>
+        </div>
+        <div class="demo-main">
+          <div class="chart-box" id="chartBox">
+            <div class="chart-head"><h3>Transacciones por canal (miles / mes)</h3><button class="linkish" id="tableToggle">Ver como tabla</button></div>
+            <div id="chart" role="img" aria-label="Barras de transacciones por canal"></div>
+            <div id="tableView" hidden></div>
+            <div class="tip" id="tip"></div>
+            <div class="insight" id="insight"></div>
+          </div>
+          <div>
+            <div class="sql" id="sqlBox" style="margin-top:0"></div>
+            <p class="demo-note" style="margin-top:.7rem">Los datos de esta demo son inventados y solo ilustran mi flujo de trabajo; no corresponden a ninguna entidad real.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE -->
+<section class="block alt" id="proceso">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-kicker">04 · Cómo trabajo</span>
+      <h2>Del dato crudo a la decisión</h2>
+      <p>Sigo un flujo inspirado en CRISP-DM, el mismo que apliqué en mis proyectos de investigación.</p>
+    </div>
+    <div class="pipeline">
+      <div class="step"><h3>Entender</h3><p>Definir la pregunta de negocio o investigación y el criterio de éxito.</p><div class="tools">objetivos · KPIs</div></div>
+      <div class="step"><h3>Extraer</h3><p>Obtener y organizar datos desde bases, archivos o APIs.</p><div class="tools">SQL · MySQL · BIDS</div></div>
+      <div class="step"><h3>Limpiar</h3><p>Faltantes, atípicos, filtrado y validación de calidad.</p><div class="tools">Pandas · NumPy</div></div>
+      <div class="step"><h3>Explorar</h3><p>EDA, pruebas de hipótesis y comparación entre grupos.</p><div class="tools">Estadística · R</div></div>
+      <div class="step"><h3>Modelar</h3><p>ML/DL con validación rigurosa y métricas adecuadas.</p><div class="tools">Scikit-learn · PyTorch</div></div>
+      <div class="step"><h3>Comunicar</h3><p>Visualizaciones, dashboards y reportes para decidir.</p><div class="tools">Power BI · Matplotlib</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="block" id="habilidades">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-kicker">05 · Habilidades técnicas</span>
+      <h2>Mi caja de herramientas</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="ic ic-2">🐍</div>
+        <h3>Programación y análisis</h3>
+        <p>Manipulación, limpieza y análisis de datos.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">R</span><span class="chip">MATLAB</span><span class="chip">Jupyter</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="ic ic-1">🗄️</div>
+        <h3>Bases de datos</h3>
+        <p>Modelado relacional y consultas para análisis.</p>
+        <div class="chips"><span class="chip">SQL</span><span class="chip">MySQL</span><span class="chip">Modelo ER</span><span class="chip">BIDS</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="ic ic-4">📊</div>
+        <h3>Visualización y BI</h3>
+        <p>Dashboards y gráficos que cuentan una historia.</p>
+        <div class="chips"><span class="chip">Power BI</span><span class="chip">Matplotlib</span><span class="chip">MRIcroGL</span><span class="chip">HTML</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="ic ic-3">📐</div>
+        <h3>Estadística</h3>
+        <p>Inferencia y análisis multivariado para interpretar datos.</p>
+        <div class="chips"><span class="chip">Pruebas de hipótesis</span><span class="chip">Intervalos de confianza</span><span class="chip">PCA</span><span class="chip">Clustering</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="ic ic-2">🤖</div>
+        <h3>Machine &amp; Deep Learning</h3>
+        <p>Modelos supervisados, no supervisados y explicables (XAI).</p>
+        <div class="chips"><span class="chip">Scikit-learn</span><span class="chip">XGBoost</span><span class="chip">PyTorch</span><span class="chip">Keras</span><span class="chip">TensorFlow</span><span class="chip">GridSearch</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="ic ic-1">🛠️</div>
+        <h3>Flujo de trabajo</h3>
+        <p>Control de versiones, entornos y documentación.</p>
+        <div class="chips"><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">VS Code</span><span class="chip">Colab</span><span class="chip">Anaconda</span><span class="chip">LaTeX</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="block alt" id="proyectos">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-kicker">06 · Proyectos</span>
+      <h2>Casos de análisis de datos</h2>
+      <p>Cada proyecto, contado como un caso: el problema, los datos, el método y el resultado.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filtrar proyectos">
+      <button class="filter on" data-f="all">Todos</button>
+      <button class="filter" data-f="ml">Machine Learning</button>
+      <button class="filter" data-f="sql">SQL / Bases de datos</button>
+      <button class="filter" data-f="bi">BI y visualización</button>
+      <button class="filter" data-f="stats">Estadística</button>
+      <button class="filter" data-f="signals">Calidad de datos</button>
+    </div>
+
+    <div class="proj-grid">
+
+      <!-- Featured: Undergrad thesis -->
+      <article class="proj featured" data-tags="ml stats">
+        <div class="proj-vis">
+          <div class="vis-label"><span><b>Clasificación</b> · 4 clases · ilustrativo</span><span>n = 605</span></div>
+          <svg class="scatter" id="scatter" viewBox="0 0 400 110" preserveAspectRatio="none" aria-hidden="true"></svg>
+        </div>
+        <div class="proj-body">
+          <div class="proj-meta">Tesis de pregrado · UniCauca + UMG Göttingen · 2023–2024</div>
+          <h3>Clasificación multiclase sobre 605 registros con CRISP-DM</h3>
+          <div class="case">
+            <div><b>Problema:</b> identificar automáticamente cuatro estados de anestesia a partir de variables fisiológicas.</div>
+            <div><b>Datos:</b> extracción, depuración e integración de registros de <b>605 pacientes</b> de la base pública VitalDB.</div>
+            <div><b>Método:</b> CRISP-DM de punta a punta; comparación de SVM, XGBoost, Random Forest y redes neuronales; métodos no lineales para medir dependencia entre variables.</div>
+            <div><b>Resultado:</b> trabajo de grado con <b>Mención Honorífica</b> y resultados presentados en Göttingen y Augsburgo (Alemania).</div>
+          </div>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Scikit-learn</span><span class="chip">XGBoost</span><span class="chip">CRISP-DM</span></div>
+          <div class="proj-foot">
+            <a class="repo-link" href="https://github.com/SofiaMunozRuiz/EEG-ECG-analysis-undergrad-research" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>Ver repositorio</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Master thesis -->
+      <article class="proj" data-tags="ml stats">
+        <div class="proj-vis">
+          <div class="vis-label"><span><b>EEG</b> · señal real · 8 canales</span><span id="eegClock">t = 0.00 s</span></div>
+          <canvas class="eeg-canvas" id="eegCanvas" aria-label="Animación de una señal EEG real de 8 canales"></canvas>
+        </div>
+        <div class="proj-body">
+          <div class="proj-meta">Tesis de maestría · UdeA · 2025–2026</div>
+          <h3>Modelos predictivos explicables sobre datos de alta dimensionalidad</h3>
+          <div class="case">
+            <div><b>Datos:</b> señales multicanal y métricas de desempeño (precisión, tiempo de reacción) integradas con datos demográficos.</div>
+            <div><b>Método:</b> EDA, pruebas estadísticas entre grupos, Deep Learning con validación por participante e IA explicable.</div>
+            <div><b>Resultado:</b> póster con <b>Mención de Honor</b> en un simposio internacional (2026).</div>
+          </div>
+          <div class="proj-foot">
+            <a class="repo-link" href="https://github.com/SofiaMunozRuiz/Master-thesis-neuroengineering" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>Ver repositorio</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- SQL -->
+      <article class="proj" data-tags="sql signals">
+        <div class="proj-vis">
+          <div class="vis-label"><span><b>Modelo ER</b> · borrador</span><span>MySQL</span></div>
+          <div class="er">
+            <div class="tbl"><div class="th">participantes</div><div class="pk">id_part</div><div>grupo</div><div>edad</div></div>
+            <div class="tbl"><div class="th">sesiones</div><div class="pk">id_sesion</div><div class="fk">id_part</div><div class="fk">id_tarea</div></div>
+            <div class="tbl"><div class="th">resultados</div><div class="pk">id_res</div><div class="fk">id_sesion</div><div>precisión · TR</div></div>
+          </div>
+          <div class="sql"><span class="k">SELECT</span> p.grupo, t.nombre,
+       <span class="f">AVG</span>(r.precision) <span class="k">AS</span> prec_media
+<span class="k">FROM</span> resultados r
+<span class="k">JOIN</span> sesiones s      <span class="k">ON</span> s.id_sesion = r.id_sesion
+<span class="k">JOIN</span> participantes p <span class="k">ON</span> p.id_part = s.id_part
+<span class="k">JOIN</span> tareas t        <span class="k">ON</span> t.id_tarea = s.id_tarea
+<span class="k">GROUP BY</span> p.grupo, t.nombre;</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-meta">Universidad de Antioquia · 2025–2026</div>
+          <h3>Base de datos relacional para juegos serios cognitivos</h3>
+          <div class="case">
+            <div><b>Objetivo:</b> organizar datos demográficos seudonimizados y métricas de desempeño de juegos serios.</div>
+            <div><b>Diseño:</b> tablas, relaciones y claves que integran tareas, participantes y resultados conductuales.</div>
+            <div><b>Siguiente paso:</b> consultas SQL por grupo y tarea, integradas con Python para análisis e IA.</div>
+          </div>
+          <div class="proj-foot"><span class="status">● En desarrollo</span></div>
+        </div>
+      </article>
+
+      <!-- Power BI -->
+      <article class="proj" data-tags="bi">
+        <div class="proj-vis">
+          <div class="vis-label"><span><b>Dashboards</b> · modelos de datos</span><span>Power BI</span></div>
+          <div class="bars" aria-hidden="true">
+            <i style="height:42%"></i><i style="height:65%"></i><i style="height:52%"></i><i style="height:80%"></i><i style="height:58%"></i><i style="height:92%"></i><i style="height:70%"></i><i style="height:84%"></i><i style="height:61%"></i><i style="height:97%"></i>
+          </div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-meta">Curso · Análisis de Datos y Business Intelligence</div>
+          <h3>Proyectos de Power BI</h3>
+          <p>Dashboards, modelos de datos, reportes y visualizaciones desarrollados durante el curso de Power BI, enfocados en análisis de datos e inteligencia de negocios.</p>
+          <div class="proj-foot">
+            <a class="repo-link" href="https://github.com/SofiaMunozRuiz/PowerBI" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>Ver repositorio</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- R multivariate -->
+      <article class="proj" data-tags="stats">
+        <div class="proj-vis">
+          <div class="vis-label"><span><b>Clustering</b> · reducción de dimensionalidad</span><span>R</span></div>
+          <svg class="scatter" id="clusters" viewBox="0 0 400 110" preserveAspectRatio="none" aria-hidden="true"></svg>
+        </div>
+        <div class="proj-body">
+          <div class="proj-meta">Maestría · Estadística multivariada</div>
+          <h3>Análisis multivariado en R</h3>
+          <p>Scripts de exploración de datos, reducción de dimensionalidad, clustering y técnicas multivariadas aplicadas a distintos conjuntos de datos.</p>
+          <div class="proj-foot">
+            <a class="repo-link" href="https://github.com/SofiaMunozRuiz/RStudio" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>Ver repositorio</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- DL fundamentals -->
+      <article class="proj" data-tags="ml">
+        <div class="proj-body">
+          <div class="proj-meta">Maestría · Fundamentos de Deep Learning</div>
+          <h3>Proyecto de Fundamentos de Deep Learning</h3>
+          <p>Implementación de redes neuronales desde sus fundamentos teórico-matemáticos hasta su entrenamiento y evaluación práctica en Python.</p>
+          <div class="chips"><span class="chip">Keras</span><span class="chip">TensorFlow</span><span class="chip">Jupyter</span></div>
+          <div class="proj-foot">
+            <a class="repo-link" href="https://github.com/SofiaMunozRuiz/Fundamentos-de-Deep-Learning" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>Ver repositorio</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ICASSO -->
+      <article class="proj" data-tags="signals stats">
+        <div class="proj-body">
+          <div class="proj-meta">Procesamiento de señales</div>
+          <h3>Calidad de datos: estabilidad de componentes (ICASSO)</h3>
+          <p>Evaluación de la estabilidad de componentes independientes para separar señal de ruido y depurar artefactos antes del análisis.</p>
+          <div class="chips"><span class="chip">ICA</span><span class="chip">Python</span><span class="chip">Calidad de datos</span></div>
+          <div class="proj-foot">
+            <a class="repo-link" href="https://github.com/SofiaMunozRuiz/ICASSO" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>Ver repositorio</a>
+          </div>
+        </div>
+      </article>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- GITHUB LIVE -->
+<section class="block" id="github">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-kicker">07 · Código abierto</span>
+      <h2>Mi GitHub, en vivo</h2>
+      <p>Esta sección se actualiza sola desde la API de GitHub cada vez que alguien visita la página.</p>
+    </div>
+    <div class="gh-head">
+      <div class="gh-user">
+        <img src="https://github.com/SofiaMunozRuiz.png?size=104" alt="" width="52" height="52" loading="lazy" />
+        <div><b>Sofia Muñoz Ruiz</b><small>@SofiaMunozRuiz · <span id="ghCount">9</span> repositorios</small></div>
+      </div>
+      <a class="btn btn-ghost btn-sm" href="https://github.com/SofiaMunozRuiz" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>Seguir en GitHub</a>
+    </div>
+    <div class="gh-langs" id="ghLangs"></div>
+    <div class="gh-legend" id="ghLegend"></div>
+    <div class="repo-grid" id="repoGrid"></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE & EDUCATION -->
+<section class="block alt" id="experiencia">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-kicker">08 · Trayectoria</span>
+      <h2>Experiencia y formación</h2>
+    </div>
+    <div class="tl-grid">
+      <div>
+        <p class="col-title">Experiencia</p>
+        <div class="timeline">
+          <div class="tl">
+            <div class="tl-date">2025 – 2026</div>
+            <h3>Investigadora · Análisis de datos y modelado predictivo</h3>
+            <div class="tl-place">Universidad de Antioquia · Tesis de maestría</div>
+            <ul>
+              <li>Procesé y organicé métricas conductuales (precisión, tiempo de reacción) de tareas cognitivas.</li>
+              <li>Análisis exploratorio y estadístico: valores faltantes, atípicos y diferencias entre grupos y tareas.</li>
+              <li>Diseñé validación a nivel de participante para evitar fuga de información entre entrenamiento y prueba.</li>
+              <li>Apliqué técnicas de explicabilidad para interpretar las predicciones de los modelos.</li>
+              <li>Redacté manuscritos científicos y documentación metodológica.</li>
+            </ul>
+          </div>
+          <div class="tl">
+            <div class="tl-date">2025 – 2026</div>
+            <h3>Instructora (Estímulo estudiante instructor)</h3>
+            <div class="tl-place">Universidad de Antioquia · Facultad de Ingeniería</div>
+            <ul>
+              <li><b>Programación en Python:</b> estructuras de datos y scripts para análisis de datos.</li>
+              <li><b>Machine Learning y Deep Learning:</b> algoritmos, arquitecturas y aplicaciones.</li>
+              <li><b>Git y GitHub:</b> repositorios, gestión de cambios y publicación de código.</li>
+              <li><b>Laboratorio de Bioseñales:</b> procesamiento de señales y acompañamiento de proyectos.</li>
+            </ul>
+          </div>
+          <div class="tl">
+            <div class="tl-date">2023 – 2024</div>
+            <h3>Investigadora de pregrado · Ciencia de datos aplicada</h3>
+            <div class="tl-place">Universidad del Cauca · University Medical Center Göttingen</div>
+            <ul>
+              <li>Extraje datos de 605 pacientes de VitalDB y apliqué CRISP-DM.</li>
+              <li>Clasifiqué cuatro estados de anestesia con SVM, XGBoost, Random Forest y redes neuronales.</li>
+              <li>Presenté resultados en Göttingen y Augsburgo (Alemania).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="col-title">Formación</p>
+        <div class="edu-card">
+          <span class="tl-date">2025 – 2026</span>
+          <h3>Magíster en Ingeniería</h3>
+          <div class="tl-place">Universidad de Antioquia · título en proceso</div>
+          <p>ML/DL, análisis multivariado e inferencia estadística, procesamiento de EEG multicanal.</p>
+        </div>
+        <div class="edu-card">
+          <span class="tl-date">2017 – 2024</span>
+          <h3>Ingeniera Física</h3>
+          <div class="tl-place">Universidad del Cauca</div>
+          <p>Matemáticas, física, estadística, física computacional y procesamiento de señales e imágenes.</p>
+        </div>
+
+        <p class="col-title" style="margin-top:1.8rem">Cursos destacados</p>
+        <div class="courses">
+          <div class="course"><span>Curso Power BI – Análisis de Datos y BI</span><span>Udemy</span></div>
+          <div class="course"><span>Machine Learning con Python · Avanzado</span><span>Udemy</span></div>
+          <div class="course"><span>Machine Learning with MATLAB</span><span>MathWorks</span></div>
+          <div class="course"><span>Deep Learning with MATLAB</span><span>MathWorks</span></div>
+          <div class="course"><span>MATLAB for Data Processing and Visualization</span><span>MathWorks</span></div>
+          <div class="course"><span>MATLAB Programming Techniques</span><span>MathWorks</span></div>
+          <div class="course"><span>Escuela de verano en neuroingeniería (32 h)</span><span>UdeA · 2024</span></div>
+          <div class="course"><span>Herramientas metodológicas en investigación (40 h)</span><span>SENA · 2020</span></div>
+        </div>
+
+        <p class="col-title" style="margin-top:1.8rem">Idiomas</p>
+        <div class="lang-row"><span>Español</span><div class="meter"><i style="width:100%"></i></div><small>Nativo</small></div>
+        <div class="lang-row"><span>Inglés</span><div class="meter"><i style="width:60%"></i></div><small>B1</small></div>
+        <div class="lang-row"><span>Alemán</span><div class="meter"><i style="width:18%"></i></div><small>Aprendiendo</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS & AWARDS -->
+<section class="block" id="publicaciones">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-kicker">09 · Logros</span>
+      <h2>Reconocimientos y publicaciones</h2>
+    </div>
+    <div class="pub-awards">
+      <div>
+        <div class="pub"><div class="pub-year">2025</div><div><h3>Tachogram processing considering different types of artifacts in heart rate variability analysis</h3><p>Muñoz-Ruiz S†, Saavedra-Ordoñez J†, Valencia-Fajardo N†, Vargas-Cañas R, Idrobo-Ávila E · En revisión</p></div></div>
+        <div class="pub"><div class="pub-year">2025</div><div><h3>Lightweight R-peak detector grounded on a synthetic QRS-template for resource-constrained devices</h3><p>Idrobo E, Muñoz-Ruiz S, Saavedra-Ordoñez J, Valencia-Fajardo N, Vargas-Cañas R · En revisión</p></div></div>
+        <div class="pub"><div class="pub-year">2024</div><div><h3>Analysis of electrocardiographic signals to assess heart rate variability under surgical context: a methodological proposal</h3><p>Workshop Biosignals · Göttingen, Alemania · <a href="https://doi.org/10.47952/gro-publ-215" target="_blank" rel="noopener">DOI ↗</a></p></div></div>
+        <div class="pub"><div class="pub-year">2022</div><div><h3>Digital Transformation in Epilepsy Diagnosis Using Raw Images and Transfer Learning in Electroencephalograms</h3><p><i>Sustainability</i> (MDPI) 14(18):11420 · <a href="https://doi.org/10.3390/su141811420" target="_blank" rel="noopener">DOI ↗</a></p></div></div>
+        <div class="pub"><div class="pub-year">2020</div><div><h3>Automatic Detection of Epileptic Waves in Electroencephalograms Using Bag of Visual Words and Machine Learning</h3><p><i>Brain Informatics</i>, LNCS 12241 · Springer · <a href="https://doi.org/10.1007/978-3-030-59277-6_15" target="_blank" rel="noopener">DOI ↗</a></p></div></div>
+      </div>
+      <div>
+        <div class="award"><span>🏆</span><div><b>Mención Honorífica al trabajo de grado</b><small>Universidad del Cauca · 2024</small></div></div>
+        <div class="award"><span>🏅</span><div><b>Mención de Honor · póster de investigación</b><small>Simposio Computational Approaches to Alzheimer's Disease · 2026</small></div></div>
+        <div class="award"><span>✈️</span><div><b>Beca DAAD · visitas académicas en Alemania</b><small>Servicio Alemán de Intercambio Académico · 2024</small></div></div>
+        <div class="award"><span>🤝</span><div><b>Reconocimiento por gestión de proyectos</b><small>Coordiné la propuesta que dio movilidad DAAD a varios estudiantes · 2024</small></div></div>
+        <div class="award"><span>🎓</span><div><b>Estímulo estudiante instructor</b><small>Universidad de Antioquia · 2025 – 2026</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="block alt" id="galeria">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="sec-kicker">10 · Galería</span>
+      <h2>Comunicando resultados</h2>
+    </div>
+    <div class="gallery">
+      <figure class="g-item"><img src="img/gottingen.jpg" alt="Presentación oral en Göttingen" loading="lazy" /><figcaption>Presentación oral · Center for Heart &amp; Brain · Göttingen, 2024</figcaption></figure>
+      <figure class="g-item"><img src="img/augsburg.jpg" alt="Presentación oral en Augsburgo" loading="lazy" /><figcaption>Presentación oral · Universidad de Augsburgo, 2024</figcaption></figure>
+      <figure class="g-item"><img src="img/poster.jpg" alt="Póster con mención de honor" loading="lazy" /><figcaption>Póster · Mención de Honor · Medellín, 2026</figcaption></figure>
+      <figure class="g-item" style="grid-column: span 2"><img src="img/daad.jpg" alt="Grupo de la visita DAAD" loading="lazy" /><figcaption>Grupo de visita académica DAAD · Alemania, 2024</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="block" id="contacto">
+  <div class="wrap reveal">
+    <div class="contact-box">
+      <div>
+        <span class="sec-kicker" style="color:#f0a27c">11 · Contacto</span>
+        <h2>¿Hablamos de datos?</h2>
+        <p>Busco sumarme a un equipo de analítica, idealmente en el sector financiero, donde los datos guíen decisiones con impacto. Si tu equipo necesita a alguien que combine rigor estadístico, SQL y comunicación clara, hablemos.</p>
+        <div class="c-links">
+          <a class="c-link" href="mailto:msofia.munozr16@gmail.com"><svg><use href="#i-mail"/></svg>msofia.munozr16@gmail.com</a>
+          <a class="c-link" href="mailto:sofia.mruiz@udea.edu.co"><svg><use href="#i-mail"/></svg>sofia.mruiz@udea.edu.co</a>
+          <a class="c-link" href="https://github.com/SofiaMunozRuiz" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>github.com/SofiaMunozRuiz</a>
+          <a class="c-link" href="https://orcid.org/0000-0003-3295-9139" target="_blank" rel="noopener"><svg><use href="#i-orcid"/></svg>ORCID 0000-0003-3295-9139</a>
+          <span class="c-link"><svg><use href="#i-pin"/></svg>Medellín, Antioquia, Colombia</span>
+        </div>
+      </div>
+      <form action="https://formspree.io/f/xeewlbol" method="POST">
+        <div><label for="f-name">Nombre</label><input id="f-name" type="text" name="name" placeholder="Tu nombre" required /></div>
+        <div><label for="f-mail">Correo</label><input id="f-mail" type="email" name="email" placeholder="tu@correo.com" required /></div>
+        <div><label for="f-msg">Mensaje</label><textarea id="f-msg" name="message" rows="5" placeholder="Cuéntame sobre la vacante o el equipo…" required></textarea></div>
+        <button class="btn btn-primary" type="submit" style="width:fit-content">Enviar mensaje</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>© <span id="year">2026</span> Sofia Muñoz Ruiz · Analista de Datos · Medellín</span>
+    <span><a href="index_investigacion.html">Perfil de investigación (EN)</a> · <a href="CV.pdf" download="CV_Sofia_Munoz_Ruiz.pdf">Descargar CV</a></span>
+  </div>
+</footer>
+
+<a href="#inicio" class="icon-btn to-top" id="toTop" aria-label="Volver arriba"><svg><use href="#i-up"/></svg></a>
+
+<script src="js/eeg-data.js"></script>
+<script>
+(() => {
+  const root = document.documentElement;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const css = name => getComputedStyle(root).getPropertyValue(name).trim();
+
+  /* ── THEME ── */
+  const themeBtn = document.getElementById('themeBtn');
+  const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  const syncIcon = () => themeBtn.querySelector('use').setAttribute('href', isDark() ? '#i-sun' : '#i-moon');
+  try { const t = localStorage.getItem('theme'); if (t) root.dataset.theme = t; } catch (e) {}
+  syncIcon();
+  themeBtn.addEventListener('click', () => {
+    root.dataset.theme = isDark() ? 'light' : 'dark';
+    try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+    syncIcon(); drawScatters();
+  });
+
+  /* ── MOBILE MENU ── */
+  const menuBtn = document.getElementById('menuBtn'), navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => { const o = navLinks.classList.toggle('open'); menuBtn.setAttribute('aria-expanded', o); });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  /* ── TYPED ROLE ── */
+  const roles = ['Analista de Datos', 'SQL · Python · Power BI', 'Modelos predictivos', 'Estadística aplicada', 'Storytelling con datos'];
+  const typed = document.getElementById('typed');
+  if (!reduced) {
+    let r = 0, i = roles[0].length, del = true;
+    const tick = () => {
+      const w = roles[r];
+      typed.textContent = w.slice(0, i);
+      if (del) { i--; if (i < 0) { del = false; r = (r + 1) % roles.length; i = 0; } }
+      else { i++; if (i > roles[r].length) { del = true; setTimeout(tick, 1800); return; } }
+      setTimeout(tick, del ? 35 : 70);
+    };
+    setTimeout(tick, 2200);
+  }
+
+  /* ── REVEAL + COUNTERS ── */
+  const count = el => {
+    const target = +el.dataset.count;
+    if (reduced) { el.textContent = target; return; }
+    const t0 = performance.now(), dur = 1400;
+    const step = now => { const p = Math.min(1, (now - t0) / dur); el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  };
+  const obs = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('visible');
+    e.target.querySelectorAll('[data-count]').forEach(count);
+    obs.unobserve(e.target);
+  }), { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  /* ── ACTIVE NAV + TO TOP ── */
+  const links = [...navLinks.querySelectorAll('a')];
+  const toTop = document.getElementById('toTop');
+  const secObs = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  document.querySelectorAll('main section[id]').forEach(s => secObs.observe(s));
+  addEventListener('scroll', () => toTop.classList.toggle('show', scrollY > 700), { passive: true });
+
+  /* ── PROJECT FILTERS ── */
+  const filters = document.querySelectorAll('.filter[data-f]');
+  filters.forEach(b => b.addEventListener('click', () => {
+    filters.forEach(x => x.classList.toggle('on', x === b));
+    const f = b.dataset.f;
+    document.querySelectorAll('.proj').forEach(p => p.classList.toggle('hide', f !== 'all' && !p.dataset.tags.split(' ').includes(f)));
+  }));
+
+  /* ── DECORATIVE SCATTERS (seeded, illustrative) ── */
+  function rng(seed) { return () => (seed = (seed * 16807) % 2147483647) / 2147483647; }
+  function gauss(r) { return Math.sqrt(-2 * Math.log(r() + 1e-9)) * Math.cos(2 * Math.PI * r()); }
+  function drawScatters() {
+    const colors = [css('--navy'), css('--accent'), css('--teal'), css('--gold')];
+    [['scatter', [[70,40],[160,75],[250,35],[330,70]], 7], ['clusters', [[90,60],[210,35],[320,72]], 11]].forEach(([id, centers, seed]) => {
+      const svg = document.getElementById(id); if (!svg) return;
+      const r = rng(seed); let out = '';
+      centers.forEach(([cx, cy], k) => {
+        for (let n = 0; n < 38; n++) {
+          const x = cx + gauss(r) * 26, y = cy + gauss(r) * 11;
+          out += `<circle cx="${x.toFixed(1)}" cy="${Math.max(4, Math.min(106, y)).toFixed(1)}" r="2.6" fill="${colors[k]}" fill-opacity=".7"/>`;
+        }
+      });
+      svg.innerHTML = out;
+    });
+  }
+  drawScatters();
+
+  /* ── EEG ANIMATION (real data) ── */
+  const canvas = document.getElementById('eegCanvas');
+  const clock = document.getElementById('eegClock');
+  if (canvas && window.EEG_RAW) {
+    const ctx = canvas.getContext('2d');
+    const names = ['Fp1','Fp2','C3','C4','P7','P8','O1','O2'];
+    const EEG = window.EEG_RAW.map(ch => { const m = Math.max(...ch.map(Math.abs)); return m ? ch.map(v => v / m) : ch; });
+    const N = EEG[0].length, FS = 50; // 500 muestras ≈ 10 s
+    let offset = 0, running = true;
+    const resize = () => {
+      const dpr = devicePixelRatio || 1;
+      canvas.width = canvas.offsetWidth * dpr; canvas.height = canvas.offsetHeight * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    resize(); addEventListener('resize', resize);
+    const draw = () => {
+      const W = canvas.offsetWidth, H = canvas.offsetHeight;
+      const pal = [css('--accent'), css('--navy'), css('--teal'), css('--gold')];
+      ctx.clearRect(0, 0, W, H);
+      const sp = H / (EEG.length + 1), amp = sp * 0.45;
+      EEG.forEach((ch, i) => {
+        const y0 = (i + 1) * sp, col = pal[Math.floor(i / 2)];
+        ctx.beginPath(); ctx.strokeStyle = col; ctx.lineWidth = 1.2; ctx.globalAlpha = .85;
+        for (let px = 0; px <= W; px += 1) {
+          const y = y0 + ch[Math.floor(offset + px * (N / W)) % N] * amp;
+          px ? ctx.lineTo(px, y) : ctx.moveTo(px, y);
+        }
+        ctx.stroke();
+        ctx.globalAlpha = .9; ctx.fillStyle = col; ctx.font = "600 9px 'JetBrains Mono', monospace";
+        ctx.fillText(names[i], 4, y0 - 5);
+      });
+      ctx.globalAlpha = 1;
+      clock.textContent = 't = ' + (offset / FS).toFixed(2) + ' s';
+      if (running && !reduced) { offset = (offset + 0.4) % N; requestAnimationFrame(draw); }
+    };
+    new IntersectionObserver(([e]) => { const was = running; running = e.isIntersecting; if (running && !was) draw(); }).observe(canvas);
+    draw();
+  }
+
+  /* ── GITHUB (live, with static fallback) ── */
+  const LANG_COLORS = { 'Jupyter Notebook': '#DA5B0B', Python: '#3572A5', MATLAB: '#e16737', HTML: '#e34c26', R: '#198CE7', 'Power BI': '#F2C811', Otro: '#8e9bb0' };
+  const FALLBACK = [
+    { name: 'Master-thesis-neuroengineering', language: 'Jupyter Notebook', description: "Research code for identifying neurophysiological changes associated with preclinical Alzheimer's disease using EEG and deep learning.", stargazers_count: 1 },
+    { name: 'EEG-ECG-analysis-undergrad-research', language: 'Jupyter Notebook', description: 'Classify anesthesia states using EEG and ECG signals and analyze brain–heart relationship with nonlinear methods.', stargazers_count: 1 },
+    { name: 'PowerBI', language: null, description: 'Dashboards, data models, reports and visualizations from my Power BI course.', stargazers_count: 0 },
+    { name: 'RStudio', language: null, description: 'R scripts for Multivariate Statistics: exploration, dimensionality reduction and clustering.', stargazers_count: 0 },
+    { name: 'Fundamentos-de-Deep-Learning', language: 'Jupyter Notebook', description: 'Proyecto de la materia Fundamentos de Deep Learning.', stargazers_count: 0 },
+    { name: 'ICASSO', language: null, description: 'ICASSO for assessing ICA component stability in EEG data.', stargazers_count: 0 },
+    { name: 'Brain-Tumor-Detection-from-MRI-Images-using-MATLAB', language: 'MATLAB', description: 'Brain tumor detection from MRI images using digital image processing.', stargazers_count: 0 },
+    { name: 'Informes-Laboratorio-2026-1', language: null, description: 'Informes y archivos de Python del laboratorio de bioseñales.', stargazers_count: 0 },
+    { name: 'Personal-Website', language: 'HTML', description: 'Source code of my personal website.', stargazers_count: 0 },
+  ];
+  const guessLang = r => r.language || (/powerbi/i.test(r.name) ? 'Power BI' : /rstudio/i.test(r.name) ? 'R' : /informes|icasso/i.test(r.name) ? 'Python' : 'Otro');
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  function renderRepos(repos) {
+    repos = repos.filter(r => !r.fork);
+    document.getElementById('ghCount').textContent = repos.length;
+    const kpi = document.getElementById('kpiRepos'); kpi.dataset.count = repos.length;
+    if (kpi.closest('.visible')) kpi.textContent = repos.length;
+    const tally = {};
+    repos.forEach(r => { const l = guessLang(r); tally[l] = (tally[l] || 0) + 1; });
+    const entries = Object.entries(tally).sort((a, b) => b[1] - a[1]);
+    document.getElementById('ghLangs').innerHTML = entries.map(([l, n]) => `<span title="${esc(l)}" style="width:${n / repos.length * 100}%;background:${LANG_COLORS[l] || LANG_COLORS.Otro}"></span>`).join('');
+    document.getElementById('ghLegend').innerHTML = entries.map(([l, n]) => `<span><i style="background:${LANG_COLORS[l] || LANG_COLORS.Otro}"></i>${esc(l)} · ${n}</span>`).join('');
+    document.getElementById('repoGrid').innerHTML = repos.slice(0, 6).map(r => {
+      const l = guessLang(r);
+      return `<a class="repo" href="https://github.com/SofiaMunozRuiz/${esc(r.name)}" target="_blank" rel="noopener">
+        <b>${esc(r.name.replace(/-/g, ' '))}</b><p>${esc(r.description || 'Sin descripción')}</p>
+        <small><span><i style="background:${LANG_COLORS[l] || LANG_COLORS.Otro}"></i>${esc(l)}</span><span>★ ${r.stargazers_count || 0}</span></small></a>`;
+    }).join('');
+  }
+  renderRepos(FALLBACK);
+  fetch('https://api.github.com/users/SofiaMunozRuiz/repos?sort=updated&per_page=100')
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(d => { if (Array.isArray(d) && d.length) renderRepos(d); })
+    .catch(() => {});
+
+  /* ── DEMO DASHBOARD (datos sintéticos) ── */
+  const CH = ['App', 'Web', 'Cajero', 'Corresponsal', 'Oficina'];
+  const SEG = {
+    jovenes:  { name: 'Jóvenes digitales', clientes: 182000, ticket: 86000,   tx: [1840, 420, 260, 110, 40] },
+    familias: { name: 'Familias',          clientes: 246000, ticket: 154000,  tx: [1210, 380, 520, 290, 160] },
+    pymes:    { name: 'Pymes',             clientes: 58000,  ticket: 1250000, tx: [610, 540, 90, 140, 210] },
+    senior:   { name: 'Senior',            clientes: 131000, ticket: 192000,  tx: [240, 130, 410, 260, 390] },
+  };
+  SEG.todos = { name: 'todos los segmentos', clientes: 0, ticket: 0, tx: CH.map(() => 0) };
+  let wsum = 0;
+  ['jovenes', 'familias', 'pymes', 'senior'].forEach(k => {
+    const g = SEG[k], t = g.tx.reduce((a, b) => a + b, 0);
+    SEG.todos.clientes += g.clientes; g.tx.forEach((v, i) => SEG.todos.tx[i] += v);
+    SEG.todos.ticket += g.ticket * t; wsum += t;
+  });
+  SEG.todos.ticket = Math.round(SEG.todos.ticket / wsum);
+  const fmt = n => n.toLocaleString('es-CO');
+  const money = n => n >= 1e6 ? '$' + (n / 1e6).toLocaleString('es-CO', { maximumFractionDigits: 2 }) + ' M' : '$' + Math.round(n / 1000) + ' mil';
+  const chart = document.getElementById('chart'), tip = document.getElementById('tip'), box = document.getElementById('chartBox');
+  const tableView = document.getElementById('tableView'), tableToggle = document.getElementById('tableToggle');
+  chart.innerHTML = CH.map(c => `<div class="hbar" data-ch="${c}"><span>${c}</span><div class="track"><div class="fill" style="width:0"></div></div><span></span></div>`).join('');
+  let cur = 'todos';
+  function renderDemo(k) {
+    cur = k;
+    const g = SEG[k], total = g.tx.reduce((a, b) => a + b, 0), max = Math.max(...g.tx);
+    const top = g.tx.indexOf(max), dig = (g.tx[0] + g.tx[1]) / total;
+    document.getElementById('tClientes').textContent = fmt(g.clientes);
+    document.getElementById('tTx').textContent = (total / 1000).toLocaleString('es-CO', { maximumFractionDigits: 2 }) + ' M';
+    document.getElementById('tDig').textContent = Math.round(dig * 100) + ' %';
+    document.getElementById('tTicket').textContent = money(g.ticket);
+    chart.querySelectorAll('.hbar').forEach((row, i) => {
+      row.classList.toggle('top', i === top);
+      row.querySelector('.fill').style.width = (g.tx[i] / max * 100) + '%';
+      row.lastElementChild.textContent = fmt(g.tx[i]);
+      row.dataset.v = g.tx[i]; row.dataset.share = (g.tx[i] / total * 100).toFixed(1);
+    });
+    tableView.innerHTML = '<table class="data-table"><thead><tr><th>Canal</th><th>Miles / mes</th><th>% del total</th></tr></thead><tbody>' +
+      CH.map((c, i) => `<tr><td>${c}</td><td>${fmt(g.tx[i])}</td><td>${(g.tx[i] / total * 100).toFixed(1)} %</td></tr>`).join('') + '</tbody></table>';
+    const phys = g.tx[2] + g.tx[3] + g.tx[4];
+    let msg = `En <b>${g.name}</b>, el canal <b>${CH[top]}</b> concentra el <b>${(max / total * 100).toFixed(0)} %</b> de las transacciones y lo digital (App + Web) suma el <b>${Math.round(dig * 100)} %</b>.`;
+    msg += dig >= 0.7 ? ' <b>Acción:</b> priorizar la experiencia en la app y ofertas personalizadas.'
+         : dig >= 0.5 ? ' <b>Acción:</b> campañas de migración a canales digitales para bajar el costo por transacción.'
+         : ` <b>Acción:</b> el ${Math.round(phys / total * 100)} % aún es presencial; conviene acompañamiento y educación digital asistida.`;
+    document.getElementById('insight').innerHTML = '💡 ' + msg;
+    const filt = k === 'todos' ? '' : `\n  <span class="k">AND</span> c.segmento = <span class="f">'${g.name}'</span>`;
+    document.getElementById('sqlBox').innerHTML =
+`<span class="c">-- Transacciones del último mes por canal</span>
+<span class="k">SELECT</span> t.canal,
+       <span class="f">COUNT</span>(*)    <span class="k">AS</span> transacciones,
+       <span class="f">AVG</span>(t.monto) <span class="k">AS</span> ticket_promedio,
+       <span class="f">ROUND</span>(100 * <span class="f">COUNT</span>(*)
+         / <span class="f">SUM</span>(<span class="f">COUNT</span>(*)) <span class="k">OVER</span> (), 1) <span class="k">AS</span> pct
+<span class="k">FROM</span> transacciones t
+<span class="k">JOIN</span> clientes c <span class="k">ON</span> c.id_cliente = t.id_cliente
+<span class="k">WHERE</span> t.fecha >= <span class="f">CURDATE</span>() - <span class="k">INTERVAL</span> 1 <span class="k">MONTH</span>${filt}
+<span class="k">GROUP BY</span> t.canal
+<span class="k">ORDER BY</span> transacciones <span class="k">DESC</span>;`;
+  }
+  document.querySelectorAll('[data-seg]').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('[data-seg]').forEach(x => x.classList.toggle('on', x === b));
+    renderDemo(b.dataset.seg);
+  }));
+  chart.addEventListener('mousemove', e => {
+    const row = e.target.closest('.hbar'); if (!row) { tip.style.opacity = 0; return; }
+    tip.innerHTML = `${row.dataset.ch} · ${SEG[cur].name}<br><b>${fmt(+row.dataset.v)} mil</b> · ${row.dataset.share} % del total`;
+    const r = box.getBoundingClientRect();
+    tip.style.left = Math.max(8, Math.min(e.clientX - r.left + 14, r.width - tip.offsetWidth - 8)) + 'px';
+    tip.style.top = (e.clientY - r.top - 50) + 'px'; tip.style.opacity = 1;
+  });
+  chart.addEventListener('mouseleave', () => tip.style.opacity = 0);
+  tableToggle.addEventListener('click', () => {
+    const show = tableView.hidden; tableView.hidden = !show; chart.hidden = show;
+    tableToggle.textContent = show ? 'Ver como gráfico' : 'Ver como tabla';
+  });
+  renderDemo('todos');
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
