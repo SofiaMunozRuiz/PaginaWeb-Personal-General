@@ -111,10 +111,10 @@
   .social svg { width: 16px; height: 16px; }
 
   .photo-card { position: relative; justify-self: center; width: min(400px, 100%); }
-  .photo-frame { position: relative; aspect-ratio: 4/5; border-radius: 200px 200px 24px 24px; overflow: hidden;
+  .photo-frame { position: relative; aspect-ratio: 4/5; border-radius: 50%; overflow: hidden;
     background: linear-gradient(180deg, #f3ede5 0%, #e9ddd0 100%); box-shadow: var(--shadow-lg); }
-  .photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 12%; mix-blend-mode: multiply; }
-  .photo-ring { position: absolute; inset: -14px; border-radius: 214px 214px 34px 34px; border: 1.5px dashed color-mix(in srgb, var(--accent) 55%, transparent); pointer-events: none; }
+  .photo-frame img { width: 100%; height: 100%; padding-top: 9%; object-fit: cover; object-position: center top; mix-blend-mode: multiply; }
+  .photo-ring { position: absolute; inset: -14px; border-radius: 50%; border: 1.5px dashed color-mix(in srgb, var(--accent) 55%, transparent); pointer-events: none; }
   .float-chip { position: absolute; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: .65rem .9rem; box-shadow: var(--shadow); font-size: .78rem; display: flex; align-items: center; gap: .6rem; animation: float 6s ease-in-out infinite; }
   .float-chip b { display: block; font-size: 1.05rem; color: var(--ink); font-family: var(--mono); line-height: 1.1; }
   .float-chip small { color: var(--muted); }
@@ -221,52 +221,6 @@
   .proj.featured .scatter { height: 250px; }
   .proj:not(.featured) .eeg-canvas { height: 190px; }
 
-  /* ── VALUE / APORTE ── */
-  .value-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-  .value { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.4rem; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: .6rem; border-top: 3px solid var(--accent); }
-  .value:nth-child(2) { border-top-color: var(--teal); } .value:nth-child(3) { border-top-color: var(--navy); } .value:nth-child(4) { border-top-color: var(--gold); }
-  .value .ic { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; font-size: 1.1rem; }
-  .value h3 { font-size: 1rem; }
-  .value p { font-size: .86rem; color: var(--ink2); }
-  .value .proof { margin-top: auto; font-size: .78rem; color: var(--muted); border-top: 1px dashed var(--line); padding-top: .6rem; }
-  .value .proof b { color: var(--ink); font-weight: 600; }
-
-  /* ── DEMO DASHBOARD ── */
-  .demo { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow-lg); overflow: hidden; }
-  .demo-bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; padding: .9rem 1.2rem; border-bottom: 1px solid var(--line); background: var(--surface2); }
-  .demo-bar .dots { display: flex; gap: 6px; } .demo-bar .dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
-  .demo-title { font-family: var(--mono); font-size: .74rem; color: var(--muted); letter-spacing: .04em; }
-  .synthetic { font-family: var(--mono); font-size: .66rem; padding: .22rem .6rem; border-radius: 999px; background: color-mix(in srgb, var(--gold) 16%, transparent); color: var(--gold); }
-  .demo-body { padding: 1.3rem; display: grid; gap: 1.2rem; }
-  .seg-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
-  .seg-row > span { font-size: .8rem; color: var(--muted); margin-right: .3rem; }
-  .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; }
-  .tile { border: 1px solid var(--line); border-radius: 12px; padding: .9rem 1rem; }
-  .tile small { display: block; font-size: .74rem; color: var(--muted); }
-  .tile b { font-family: var(--serif); font-weight: 400; font-size: 1.75rem; line-height: 1.15; color: var(--ink); }
-  .demo-body > *, .demo-main > *, .tiles > * { min-width: 0; }
-  .demo-body { min-width: 0; }
-  .demo-main { display: grid; grid-template-columns: 1.15fr .85fr; gap: 1.2rem; }
-  .chart-box { border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.1rem; position: relative; }
-  .chart-head { display: flex; justify-content: space-between; align-items: baseline; gap: .6rem; margin-bottom: .8rem; }
-  .chart-head h3 { font-size: .92rem; }
-  .linkish { background: none; border: 0; font: inherit; font-size: .76rem; color: var(--navy); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
-  .hbar { display: grid; grid-template-columns: 92px 1fr 64px; align-items: center; gap: .6rem; padding: .32rem .2rem; border-radius: 6px; }
-  .hbar:hover { background: var(--chip-bg); }
-  .hbar span:first-child { font-size: .82rem; color: var(--ink2); }
-  .hbar .track { height: 16px; position: relative; border-left: 1px solid var(--line); }
-  .hbar .fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--navy); border-radius: 0 4px 4px 0; transition: width .6s cubic-bezier(.2,.8,.2,1); }
-  .hbar.top .fill { background: var(--accent); }
-  .hbar span:last-child { font-family: var(--mono); font-size: .76rem; color: var(--ink); text-align: right; }
-  .tip { position: absolute; left: 0; top: 0; pointer-events: none; background: var(--ink); color: var(--bg); font-size: .76rem; padding: .45rem .65rem; border-radius: 8px; box-shadow: var(--shadow); opacity: 0; transition: opacity .15s; white-space: nowrap; z-index: 2; }
-  .tip b { font-family: var(--mono); }
-  .data-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
-  .data-table th, .data-table td { text-align: left; padding: .35rem .3rem; border-bottom: 1px solid var(--line); color: var(--ink2); }
-  .data-table td:not(:first-child), .data-table th:not(:first-child) { text-align: right; font-family: var(--mono); }
-  .insight { margin-top: .9rem; font-size: .86rem; color: var(--ink2); background: color-mix(in srgb, var(--teal) 9%, transparent); border-radius: 10px; padding: .7rem .9rem; }
-  .insight b { color: var(--ink); }
-  .demo-note { font-size: .78rem; color: var(--muted); }
-
   /* ── GITHUB LIVE ── */
   .gh-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
   .gh-user { display: flex; align-items: center; gap: .9rem; }
@@ -352,10 +306,17 @@
   .to-top { position: fixed; right: 18px; bottom: 18px; z-index: 90; opacity: 0; pointer-events: none; transition: opacity .3s; box-shadow: var(--shadow); }
   .to-top.show { opacity: 1; pointer-events: auto; }
 
+  /* ── TEXTO JUSTIFICADO (solo en pantallas medianas y grandes) ── */
+  @media (min-width: 561px) {
+    .hero-bio, .about-text p, .sec-head p, .proj-body > p, .case > div,
+    .tl li, .edu-card p, .contact-box > div > p {
+      text-align: justify;
+      hyphens: auto; -webkit-hyphens: auto;
+    }
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 1000px) {
-    .value-grid, .tiles { grid-template-columns: repeat(2, 1fr); }
-    .demo-main { grid-template-columns: 1fr; }
     .pipeline { grid-template-columns: repeat(3, 1fr); }
     .step:nth-child(3)::after { display: none; }
     .skills-grid, .repo-grid { grid-template-columns: repeat(2, 1fr); }
@@ -378,9 +339,7 @@
     section.block { padding: 70px 0; }
   }
   @media (max-width: 560px) {
-    .pipeline, .skills-grid, .repo-grid, .value-grid { grid-template-columns: 1fr; }
-    .tile b { font-size: 1.3rem; } .tile { padding: .7rem .8rem; } .demo-body { padding: 1rem; }
-    .hbar { grid-template-columns: 84px 1fr 52px; }
+    .pipeline, .skills-grid, .repo-grid { grid-template-columns: 1fr; }
     .proj.featured .scatter { height: 170px; }
     .step::after { display: none; }
     .chip-a { left: -6%; top: 8%; } .chip-b { right: -6%; } .chip-c { display: none; }
@@ -412,8 +371,6 @@
     <a class="logo" href="#inicio">Sofia<span>.</span>data</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#sobre-mi">Sobre mí</a></li>
-      <li><a href="#aporte">Qué aporto</a></li>
-      <li><a href="#demo">Demo</a></li>
       <li><a href="#habilidades">Habilidades</a></li>
       <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#experiencia">Experiencia</a></li>
@@ -432,14 +389,18 @@
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <div class="eyebrow"><span class="dot"></span>Analista de Datos · Disponible · Medellín</div>
-        <h1>Datos bien hechos, <em>decisiones mejor tomadas.</em></h1>
+        <div class="eyebrow"><span class="dot"></span>Inteligencia Artificial · Análisis de Datos · Disponible · Medellín, Colombia</div>
+        <h1>Sofia Muñoz Ruiz</h1>
         <p class="hero-name">Sofia Muñoz Ruiz</p>
         <p class="hero-role">Ingeniera Física · Magíster en Ingeniería · <span class="typed" id="typed">Analista de Datos</span></p>
         <p class="hero-bio">
-          Soy analista de datos con base en <strong>estadística, SQL, Python y Power BI</strong>. Integro y limpio datos,
-          construyo indicadores y modelos predictivos validados con rigor, y los traduzco en tableros y mensajes claros
-          para que las áreas de negocio decidan con evidencia. Quiero llevar esa disciplina al <strong>sector financiero</strong>.
+          Ingeniera física con formación en  <strong>estadística, matemáticas, física. Con experiencia en programación en Python, Inteligencia Artificial, Modelos de Machine Learning y Deep Learning. He profundizado 
+          mis conocimientos en SQL, HTML y Power BI</strong>. Me
+          caracterizo por mi capacidad de aprendizaje
+          autónomo, curiosidad, responsabilidad y disposición para adquirir
+          nuevos conocimientos, con el propósito de aportar
+          soluciones innovadoras que generen valor e
+          impacto positivo en la sociedad.
         </p>
         <div class="hero-btns">
           <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
@@ -463,12 +424,6 @@
       </div>
     </div>
 
-    <div class="kpis reveal">
-      <div class="kpi"><div class="kpi-val" data-count="605">0</div><div class="kpi-label">registros de pacientes integrados y analizados</div></div>
-      <div class="kpi"><div class="kpi-val"><span data-count="4">0</span></div><div class="kpi-label">algoritmos de clasificación comparados (SVM, XGBoost, RF, redes)</div></div>
-      <div class="kpi"><div class="kpi-val"><span data-count="4">0</span></div><div class="kpi-label">cursos técnicos dictados como instructora</div></div>
-      <div class="kpi"><div class="kpi-val"><span data-count="9" id="kpiRepos">0</span></div><div class="kpi-label">repositorios públicos en GitHub</div></div>
-    </div>
   </div>
 </header>
 
@@ -479,14 +434,23 @@
   <div class="wrap reveal">
     <div class="sec-head">
       <span class="sec-kicker">01 · Sobre mí</span>
-      <h2>Rigor científico al servicio del negocio</h2>
+       <h2> Ingeniera Física y Magister en Ingeniería </h2>
     </div>
     <div class="about-grid">
       <div class="about-text">
-        <p>Soy <strong>Ingeniera Física</strong> (Universidad del Cauca) y <strong>Magíster en Ingeniería</strong> (Universidad de Antioquia, título en proceso). La física me enseñó a plantear bien un problema antes de resolverlo; la estadística, a no confiar en un resultado hasta validarlo.</p>
-        <p>He recorrido el <strong>ciclo completo del dato</strong> con datos reales: extraje y depuré registros de 605 pacientes, integré métricas de desempeño con datos demográficos, diseñé una <strong>base de datos relacional en MySQL</strong> y construí <strong>modelos de clasificación</strong> con validación estricta para evitar fuga de información, un cuidado que también es clave en modelos de riesgo o de fraude.</p>
-        <p>También enseño Python, Machine Learning y Git en la Universidad de Antioquia. Explicar lo técnico de forma sencilla es parte de mi trabajo diario, y es justo lo que necesita un equipo de negocio que quiere entender sus datos.</p>
-        <p><strong>¿Por qué el sector financiero?</strong> Porque combina lo que más me motiva: grandes volúmenes de datos, preguntas con impacto real en las personas y la exigencia de que cada modelo sea preciso, explicable y responsable.</p>
+  
+      <p>Soy <strong>Ingeniera Física</strong> de la Universidad del Cauca y <strong>Magíster en Ingeniería</strong> de 
+        la Universidad de Antioquia (título en proceso de obtención), con interés en la ciencia de datos, 
+        la inteligencia artificial y el aprendizaje automático.</p>
+
+      <p>Tengo experiencia en análisis y procesamiento de datos, programación en Python y desarrollo de modelos de Machine Learning
+        y Deep Learning, especialmente aplicados al análisis de señales neurofisiológicas. Mi formación en física, matemáticas y
+          estadística me permite abordar problemas complejos desde una perspectiva analítica y desarrollar soluciones basadas en datos.</p>
+
+      <p>Cuento con experiencia en docencia universitaria, apoyando la enseñanza de Python, Machine Learning, 
+        Deep Learning y Git en la Universidad de Antioquia. Esta experiencia me ha permitido fortalecer mis conocimientos técnicos y
+         desarrollar habilidades de comunicación, liderazgo y transmisión de conocimientos. </p>
+       
       </div>
       <div class="soft-list">
         <div class="soft"><span>🧭</span>Pensamiento analítico y estratégico para problemas complejos</div>
@@ -500,85 +464,12 @@
   </div>
 </section>
 
-<!-- VALUE -->
-<section class="block alt" id="aporte">
-  <div class="wrap reveal">
-    <div class="sec-head">
-      <span class="sec-kicker">02 · Qué aporto</span>
-      <h2>Cómo mis habilidades se traducen en banca</h2>
-      <p>Lo que ya hice con datos reales en investigación aplica de forma directa a los retos analíticos de una entidad financiera.</p>
-    </div>
-    <div class="value-grid">
-      <div class="value"><div class="ic ic-1">📊</div>
-        <h3>Reportería e indicadores</h3>
-        <p>KPIs, tableros en Power BI y reportes que responden preguntas de negocio sin ambigüedad.</p>
-        <div class="proof"><b>Base:</b> dashboards y modelos de datos en Power BI; visualización en Python.</div></div>
-      <div class="value"><div class="ic ic-2">👥</div>
-        <h3>Analítica de clientes</h3>
-        <p>Segmentación y perfilamiento con clustering y PCA para entender comportamientos y priorizar acciones.</p>
-        <div class="proof"><b>Base:</b> estadística multivariada en R; comparación de grupos con pruebas de hipótesis.</div></div>
-      <div class="value"><div class="ic ic-3">🛡️</div>
-        <h3>Modelos de riesgo y fraude</h3>
-        <p>Clasificación con validación sin fuga de información y modelos explicables, como exige un entorno regulado.</p>
-        <div class="proof"><b>Base:</b> SVM, XGBoost, Random Forest y redes neuronales; técnicas de IA explicable.</div></div>
-      <div class="value"><div class="ic ic-4">🗄️</div>
-        <h3>Calidad y gobierno del dato</h3>
-        <p>Modelado relacional, seudonimización, control de faltantes y atípicos, y documentación trazable.</p>
-        <div class="proof"><b>Base:</b> base de datos MySQL en desarrollo; estándar BIDS; metodología CRISP-DM.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- DEMO -->
-<section class="block" id="demo">
-  <div class="wrap reveal">
-    <div class="sec-head">
-      <span class="sec-kicker">03 · Demo interactiva</span>
-      <h2>Un tablero, de la consulta al hallazgo</h2>
-      <p>Así trabajo: una consulta SQL, una visualización y una conclusión accionable. Elige un segmento y mira cómo cambia todo.</p>
-    </div>
-    <div class="demo">
-      <div class="demo-bar">
-        <div style="display:flex;align-items:center;gap:.8rem"><span class="dots"><i></i><i></i><i></i></span><span class="demo-title">tablero_canales · vista de análisis</span></div>
-        <span class="synthetic">⚠ Datos sintéticos de ejemplo</span>
-      </div>
-      <div class="demo-body">
-        <div class="seg-row" role="group" aria-label="Segmento de clientes"><span>Segmento:</span>
-          <button class="filter on" data-seg="todos">Todos</button>
-          <button class="filter" data-seg="jovenes">Jóvenes digitales</button>
-          <button class="filter" data-seg="familias">Familias</button>
-          <button class="filter" data-seg="pymes">Pymes</button>
-          <button class="filter" data-seg="senior">Senior</button>
-        </div>
-        <div class="tiles">
-          <div class="tile"><small>Clientes</small><b id="tClientes">–</b></div>
-          <div class="tile"><small>Transacciones / mes</small><b id="tTx">–</b></div>
-          <div class="tile"><small>Participación digital</small><b id="tDig">–</b></div>
-          <div class="tile"><small>Ticket promedio</small><b id="tTicket">–</b></div>
-        </div>
-        <div class="demo-main">
-          <div class="chart-box" id="chartBox">
-            <div class="chart-head"><h3>Transacciones por canal (miles / mes)</h3><button class="linkish" id="tableToggle">Ver como tabla</button></div>
-            <div id="chart" role="img" aria-label="Barras de transacciones por canal"></div>
-            <div id="tableView" hidden></div>
-            <div class="tip" id="tip"></div>
-            <div class="insight" id="insight"></div>
-          </div>
-          <div>
-            <div class="sql" id="sqlBox" style="margin-top:0"></div>
-            <p class="demo-note" style="margin-top:.7rem">Los datos de esta demo son inventados y solo ilustran mi flujo de trabajo; no corresponden a ninguna entidad real.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- PIPELINE -->
 <section class="block alt" id="proceso">
   <div class="wrap reveal">
     <div class="sec-head">
-      <span class="sec-kicker">04 · Cómo trabajo</span>
+      <span class="sec-kicker">02 · Cómo trabajo</span>
       <h2>Del dato crudo a la decisión</h2>
       <p>Sigo un flujo inspirado en CRISP-DM, el mismo que apliqué en mis proyectos de investigación.</p>
     </div>
@@ -597,7 +488,7 @@
 <section class="block" id="habilidades">
   <div class="wrap reveal">
     <div class="sec-head">
-      <span class="sec-kicker">05 · Habilidades técnicas</span>
+      <span class="sec-kicker">03 · Habilidades técnicas</span>
       <h2>Mi caja de herramientas</h2>
     </div>
     <div class="skills-grid">
@@ -645,7 +536,7 @@
 <section class="block alt" id="proyectos">
   <div class="wrap reveal">
     <div class="sec-head">
-      <span class="sec-kicker">06 · Proyectos</span>
+      <span class="sec-kicker">04 · Proyectos</span>
       <h2>Casos de análisis de datos</h2>
       <p>Cada proyecto, contado como un caso: el problema, los datos, el método y el resultado.</p>
     </div>
@@ -796,32 +687,13 @@
   </div>
 </section>
 
-<!-- GITHUB LIVE -->
-<section class="block" id="github">
-  <div class="wrap reveal">
-    <div class="sec-head">
-      <span class="sec-kicker">07 · Código abierto</span>
-      <h2>Mi GitHub, en vivo</h2>
-      <p>Esta sección se actualiza sola desde la API de GitHub cada vez que alguien visita la página.</p>
-    </div>
-    <div class="gh-head">
-      <div class="gh-user">
-        <img src="https://github.com/SofiaMunozRuiz.png?size=104" alt="" width="52" height="52" loading="lazy" />
-        <div><b>Sofia Muñoz Ruiz</b><small>@SofiaMunozRuiz · <span id="ghCount">9</span> repositorios</small></div>
-      </div>
-      <a class="btn btn-ghost btn-sm" href="https://github.com/SofiaMunozRuiz" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg>Seguir en GitHub</a>
-    </div>
-    <div class="gh-langs" id="ghLangs"></div>
-    <div class="gh-legend" id="ghLegend"></div>
-    <div class="repo-grid" id="repoGrid"></div>
-  </div>
-</section>
+
 
 <!-- EXPERIENCE & EDUCATION -->
 <section class="block alt" id="experiencia">
   <div class="wrap reveal">
     <div class="sec-head">
-      <span class="sec-kicker">08 · Trayectoria</span>
+      <span class="sec-kicker">06 · Trayectoria</span>
       <h2>Experiencia y formación</h2>
     </div>
     <div class="tl-grid">
@@ -842,7 +714,7 @@
           </div>
           <div class="tl">
             <div class="tl-date">2025 – 2026</div>
-            <h3>Instructora (Estímulo estudiante instructor)</h3>
+            <h3>Profesora de Cátedra (Estímulo estudiante instructor)</h3>
             <div class="tl-place">Universidad de Antioquia · Facultad de Ingeniería</div>
             <ul>
               <li><b>Programación en Python:</b> estructuras de datos y scripts para análisis de datos.</li>
@@ -904,7 +776,7 @@
 <section class="block" id="publicaciones">
   <div class="wrap reveal">
     <div class="sec-head">
-      <span class="sec-kicker">09 · Logros</span>
+      <span class="sec-kicker">07 · Logros</span>
       <h2>Reconocimientos y publicaciones</h2>
     </div>
     <div class="pub-awards">
@@ -930,7 +802,7 @@
 <section class="block alt" id="galeria">
   <div class="wrap reveal">
     <div class="sec-head">
-      <span class="sec-kicker">10 · Galería</span>
+      <span class="sec-kicker">08 · Galería</span>
       <h2>Comunicando resultados</h2>
     </div>
     <div class="gallery">
@@ -947,9 +819,9 @@
   <div class="wrap reveal">
     <div class="contact-box">
       <div>
-        <span class="sec-kicker" style="color:#f0a27c">11 · Contacto</span>
-        <h2>¿Hablamos de datos?</h2>
-        <p>Busco sumarme a un equipo de analítica, idealmente en el sector financiero, donde los datos guíen decisiones con impacto. Si tu equipo necesita a alguien que combine rigor estadístico, SQL y comunicación clara, hablemos.</p>
+        <span class="sec-kicker" style="color:#f0a27c">09 · Contacto</span>
+        <h2>Contactame!</h2>
+        <p></p>
         <div class="c-links">
           <a class="c-link" href="mailto:msofia.munozr16@gmail.com"><svg><use href="#i-mail"/></svg>msofia.munozr16@gmail.com</a>
           <a class="c-link" href="mailto:sofia.mruiz@udea.edu.co"><svg><use href="#i-mail"/></svg>sofia.mruiz@udea.edu.co</a>
@@ -972,8 +844,8 @@
 
 <footer>
   <div class="wrap foot-in">
-    <span>© <span id="year">2026</span> Sofia Muñoz Ruiz · Analista de Datos · Medellín</span>
-    <span><a href="index_investigacion.html">Perfil de investigación (EN)</a> · <a href="CV.pdf" download="CV_Sofia_Munoz_Ruiz.pdf">Descargar CV</a></span>
+    <span>© <span id="year">2026</span> Sofia Muñoz Ruiz ·Ingeniera física · Inteligencia Artificial · Análisis de Datos · Medellín</span>
+    <span><a href="https://sofiamunozruiz.vercel.app/" target="_blank" rel="noopener">Perfil de investigación (EN)</a> · <a href="CV.pdf" download="CV_Sofia_Munoz_Ruiz.pdf">Descargar CV</a></span>
   </div>
 </footer>
 
@@ -1147,81 +1019,6 @@
     .then(d => { if (Array.isArray(d) && d.length) renderRepos(d); })
     .catch(() => {});
 
-  /* ── DEMO DASHBOARD (datos sintéticos) ── */
-  const CH = ['App', 'Web', 'Cajero', 'Corresponsal', 'Oficina'];
-  const SEG = {
-    jovenes:  { name: 'Jóvenes digitales', clientes: 182000, ticket: 86000,   tx: [1840, 420, 260, 110, 40] },
-    familias: { name: 'Familias',          clientes: 246000, ticket: 154000,  tx: [1210, 380, 520, 290, 160] },
-    pymes:    { name: 'Pymes',             clientes: 58000,  ticket: 1250000, tx: [610, 540, 90, 140, 210] },
-    senior:   { name: 'Senior',            clientes: 131000, ticket: 192000,  tx: [240, 130, 410, 260, 390] },
-  };
-  SEG.todos = { name: 'todos los segmentos', clientes: 0, ticket: 0, tx: CH.map(() => 0) };
-  let wsum = 0;
-  ['jovenes', 'familias', 'pymes', 'senior'].forEach(k => {
-    const g = SEG[k], t = g.tx.reduce((a, b) => a + b, 0);
-    SEG.todos.clientes += g.clientes; g.tx.forEach((v, i) => SEG.todos.tx[i] += v);
-    SEG.todos.ticket += g.ticket * t; wsum += t;
-  });
-  SEG.todos.ticket = Math.round(SEG.todos.ticket / wsum);
-  const fmt = n => n.toLocaleString('es-CO');
-  const money = n => n >= 1e6 ? '$' + (n / 1e6).toLocaleString('es-CO', { maximumFractionDigits: 2 }) + ' M' : '$' + Math.round(n / 1000) + ' mil';
-  const chart = document.getElementById('chart'), tip = document.getElementById('tip'), box = document.getElementById('chartBox');
-  const tableView = document.getElementById('tableView'), tableToggle = document.getElementById('tableToggle');
-  chart.innerHTML = CH.map(c => `<div class="hbar" data-ch="${c}"><span>${c}</span><div class="track"><div class="fill" style="width:0"></div></div><span></span></div>`).join('');
-  let cur = 'todos';
-  function renderDemo(k) {
-    cur = k;
-    const g = SEG[k], total = g.tx.reduce((a, b) => a + b, 0), max = Math.max(...g.tx);
-    const top = g.tx.indexOf(max), dig = (g.tx[0] + g.tx[1]) / total;
-    document.getElementById('tClientes').textContent = fmt(g.clientes);
-    document.getElementById('tTx').textContent = (total / 1000).toLocaleString('es-CO', { maximumFractionDigits: 2 }) + ' M';
-    document.getElementById('tDig').textContent = Math.round(dig * 100) + ' %';
-    document.getElementById('tTicket').textContent = money(g.ticket);
-    chart.querySelectorAll('.hbar').forEach((row, i) => {
-      row.classList.toggle('top', i === top);
-      row.querySelector('.fill').style.width = (g.tx[i] / max * 100) + '%';
-      row.lastElementChild.textContent = fmt(g.tx[i]);
-      row.dataset.v = g.tx[i]; row.dataset.share = (g.tx[i] / total * 100).toFixed(1);
-    });
-    tableView.innerHTML = '<table class="data-table"><thead><tr><th>Canal</th><th>Miles / mes</th><th>% del total</th></tr></thead><tbody>' +
-      CH.map((c, i) => `<tr><td>${c}</td><td>${fmt(g.tx[i])}</td><td>${(g.tx[i] / total * 100).toFixed(1)} %</td></tr>`).join('') + '</tbody></table>';
-    const phys = g.tx[2] + g.tx[3] + g.tx[4];
-    let msg = `En <b>${g.name}</b>, el canal <b>${CH[top]}</b> concentra el <b>${(max / total * 100).toFixed(0)} %</b> de las transacciones y lo digital (App + Web) suma el <b>${Math.round(dig * 100)} %</b>.`;
-    msg += dig >= 0.7 ? ' <b>Acción:</b> priorizar la experiencia en la app y ofertas personalizadas.'
-         : dig >= 0.5 ? ' <b>Acción:</b> campañas de migración a canales digitales para bajar el costo por transacción.'
-         : ` <b>Acción:</b> el ${Math.round(phys / total * 100)} % aún es presencial; conviene acompañamiento y educación digital asistida.`;
-    document.getElementById('insight').innerHTML = '💡 ' + msg;
-    const filt = k === 'todos' ? '' : `\n  <span class="k">AND</span> c.segmento = <span class="f">'${g.name}'</span>`;
-    document.getElementById('sqlBox').innerHTML =
-`<span class="c">-- Transacciones del último mes por canal</span>
-<span class="k">SELECT</span> t.canal,
-       <span class="f">COUNT</span>(*)    <span class="k">AS</span> transacciones,
-       <span class="f">AVG</span>(t.monto) <span class="k">AS</span> ticket_promedio,
-       <span class="f">ROUND</span>(100 * <span class="f">COUNT</span>(*)
-         / <span class="f">SUM</span>(<span class="f">COUNT</span>(*)) <span class="k">OVER</span> (), 1) <span class="k">AS</span> pct
-<span class="k">FROM</span> transacciones t
-<span class="k">JOIN</span> clientes c <span class="k">ON</span> c.id_cliente = t.id_cliente
-<span class="k">WHERE</span> t.fecha >= <span class="f">CURDATE</span>() - <span class="k">INTERVAL</span> 1 <span class="k">MONTH</span>${filt}
-<span class="k">GROUP BY</span> t.canal
-<span class="k">ORDER BY</span> transacciones <span class="k">DESC</span>;`;
-  }
-  document.querySelectorAll('[data-seg]').forEach(b => b.addEventListener('click', () => {
-    document.querySelectorAll('[data-seg]').forEach(x => x.classList.toggle('on', x === b));
-    renderDemo(b.dataset.seg);
-  }));
-  chart.addEventListener('mousemove', e => {
-    const row = e.target.closest('.hbar'); if (!row) { tip.style.opacity = 0; return; }
-    tip.innerHTML = `${row.dataset.ch} · ${SEG[cur].name}<br><b>${fmt(+row.dataset.v)} mil</b> · ${row.dataset.share} % del total`;
-    const r = box.getBoundingClientRect();
-    tip.style.left = Math.max(8, Math.min(e.clientX - r.left + 14, r.width - tip.offsetWidth - 8)) + 'px';
-    tip.style.top = (e.clientY - r.top - 50) + 'px'; tip.style.opacity = 1;
-  });
-  chart.addEventListener('mouseleave', () => tip.style.opacity = 0);
-  tableToggle.addEventListener('click', () => {
-    const show = tableView.hidden; tableView.hidden = !show; chart.hidden = show;
-    tableToggle.textContent = show ? 'Ver como gráfico' : 'Ver como tabla';
-  });
-  renderDemo('todos');
 
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
