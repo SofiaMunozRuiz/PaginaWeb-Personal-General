@@ -221,22 +221,6 @@
   .proj.featured .scatter { height: 250px; }
   .proj:not(.featured) .eeg-canvas { height: 190px; }
 
-  /* ── GITHUB LIVE ── */
-  .gh-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
-  .gh-user { display: flex; align-items: center; gap: .9rem; }
-  .gh-user img { width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--line); background: var(--surface2); }
-  .gh-user b { display: block; }
-  .gh-user small { color: var(--muted); font-family: var(--mono); font-size: .76rem; }
-  .gh-langs { display: flex; height: 10px; border-radius: 999px; overflow: hidden; background: var(--surface2); margin: .4rem 0 .6rem; }
-  .gh-legend { display: flex; flex-wrap: wrap; gap: .9rem; font-size: .76rem; color: var(--muted); margin-bottom: 1.4rem; }
-  .gh-legend i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: .35rem; }
-  .repo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; }
-  .repo { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.1rem; text-decoration: none; display: flex; flex-direction: column; gap: .4rem; transition: border-color .2s, transform .2s; }
-  .repo:hover { border-color: var(--accent); transform: translateY(-3px); }
-  .repo b { font-size: .9rem; color: var(--navy); word-break: break-word; }
-  .repo p { font-size: .8rem; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-  .repo small { font-family: var(--mono); font-size: .7rem; color: var(--ink2); margin-top: auto; display: flex; gap: .8rem; align-items: center; }
-  .repo small i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: .3rem; }
 
   /* ── TIMELINE ── */
   .tl-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 3rem; }
@@ -319,7 +303,7 @@
   @media (max-width: 1000px) {
     .pipeline { grid-template-columns: repeat(3, 1fr); }
     .step:nth-child(3)::after { display: none; }
-    .skills-grid, .repo-grid { grid-template-columns: repeat(2, 1fr); }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
     .chip-a { left: -4%; } .chip-b { right: -4%; }
   }
   @media (max-width: 860px) {
@@ -339,7 +323,7 @@
     section.block { padding: 70px 0; }
   }
   @media (max-width: 560px) {
-    .pipeline, .skills-grid, .repo-grid { grid-template-columns: 1fr; }
+    .pipeline, .skills-grid { grid-template-columns: 1fr; }
     .proj.featured .scatter { height: 170px; }
     .step::after { display: none; }
     .chip-a { left: -6%; top: 8%; } .chip-b { right: -6%; } .chip-c { display: none; }
@@ -693,7 +677,7 @@
 <section class="block alt" id="experiencia">
   <div class="wrap reveal">
     <div class="sec-head">
-      <span class="sec-kicker">06 · Trayectoria</span>
+      <span class="sec-kicker">05 · Trayectoria</span>
       <h2>Experiencia y formación</h2>
     </div>
     <div class="tl-grid">
@@ -776,7 +760,7 @@
 <section class="block" id="publicaciones">
   <div class="wrap reveal">
     <div class="sec-head">
-      <span class="sec-kicker">07 · Logros</span>
+      <span class="sec-kicker">06 · Logros</span>
       <h2>Reconocimientos y publicaciones</h2>
     </div>
     <div class="pub-awards">
@@ -802,7 +786,7 @@
 <section class="block alt" id="galeria">
   <div class="wrap reveal">
     <div class="sec-head">
-      <span class="sec-kicker">08 · Galería</span>
+      <span class="sec-kicker">07 · Galería</span>
       <h2>Comunicando resultados</h2>
     </div>
     <div class="gallery">
@@ -819,7 +803,7 @@
   <div class="wrap reveal">
     <div class="contact-box">
       <div>
-        <span class="sec-kicker" style="color:#f0a27c">09 · Contacto</span>
+        <span class="sec-kicker" style="color:#f0a27c">08 · Contacto</span>
         <h2>Contactame!</h2>
         <p></p>
         <div class="c-links">
@@ -980,45 +964,6 @@
     new IntersectionObserver(([e]) => { const was = running; running = e.isIntersecting; if (running && !was) draw(); }).observe(canvas);
     draw();
   }
-
-  /* ── GITHUB (live, with static fallback) ── */
-  const LANG_COLORS = { 'Jupyter Notebook': '#DA5B0B', Python: '#3572A5', MATLAB: '#e16737', HTML: '#e34c26', R: '#198CE7', 'Power BI': '#F2C811', Otro: '#8e9bb0' };
-  const FALLBACK = [
-    { name: 'Master-thesis-neuroengineering', language: 'Jupyter Notebook', description: "Research code for identifying neurophysiological changes associated with preclinical Alzheimer's disease using EEG and deep learning.", stargazers_count: 1 },
-    { name: 'EEG-ECG-analysis-undergrad-research', language: 'Jupyter Notebook', description: 'Classify anesthesia states using EEG and ECG signals and analyze brain–heart relationship with nonlinear methods.', stargazers_count: 1 },
-    { name: 'PowerBI', language: null, description: 'Dashboards, data models, reports and visualizations from my Power BI course.', stargazers_count: 0 },
-    { name: 'RStudio', language: null, description: 'R scripts for Multivariate Statistics: exploration, dimensionality reduction and clustering.', stargazers_count: 0 },
-    { name: 'Fundamentos-de-Deep-Learning', language: 'Jupyter Notebook', description: 'Proyecto de la materia Fundamentos de Deep Learning.', stargazers_count: 0 },
-    { name: 'ICASSO', language: null, description: 'ICASSO for assessing ICA component stability in EEG data.', stargazers_count: 0 },
-    { name: 'Brain-Tumor-Detection-from-MRI-Images-using-MATLAB', language: 'MATLAB', description: 'Brain tumor detection from MRI images using digital image processing.', stargazers_count: 0 },
-    { name: 'Informes-Laboratorio-2026-1', language: null, description: 'Informes y archivos de Python del laboratorio de bioseñales.', stargazers_count: 0 },
-    { name: 'Personal-Website', language: 'HTML', description: 'Source code of my personal website.', stargazers_count: 0 },
-  ];
-  const guessLang = r => r.language || (/powerbi/i.test(r.name) ? 'Power BI' : /rstudio/i.test(r.name) ? 'R' : /informes|icasso/i.test(r.name) ? 'Python' : 'Otro');
-  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  function renderRepos(repos) {
-    repos = repos.filter(r => !r.fork);
-    document.getElementById('ghCount').textContent = repos.length;
-    const kpi = document.getElementById('kpiRepos'); kpi.dataset.count = repos.length;
-    if (kpi.closest('.visible')) kpi.textContent = repos.length;
-    const tally = {};
-    repos.forEach(r => { const l = guessLang(r); tally[l] = (tally[l] || 0) + 1; });
-    const entries = Object.entries(tally).sort((a, b) => b[1] - a[1]);
-    document.getElementById('ghLangs').innerHTML = entries.map(([l, n]) => `<span title="${esc(l)}" style="width:${n / repos.length * 100}%;background:${LANG_COLORS[l] || LANG_COLORS.Otro}"></span>`).join('');
-    document.getElementById('ghLegend').innerHTML = entries.map(([l, n]) => `<span><i style="background:${LANG_COLORS[l] || LANG_COLORS.Otro}"></i>${esc(l)} · ${n}</span>`).join('');
-    document.getElementById('repoGrid').innerHTML = repos.slice(0, 6).map(r => {
-      const l = guessLang(r);
-      return `<a class="repo" href="https://github.com/SofiaMunozRuiz/${esc(r.name)}" target="_blank" rel="noopener">
-        <b>${esc(r.name.replace(/-/g, ' '))}</b><p>${esc(r.description || 'Sin descripción')}</p>
-        <small><span><i style="background:${LANG_COLORS[l] || LANG_COLORS.Otro}"></i>${esc(l)}</span><span>★ ${r.stargazers_count || 0}</span></small></a>`;
-    }).join('');
-  }
-  renderRepos(FALLBACK);
-  fetch('https://api.github.com/users/SofiaMunozRuiz/repos?sort=updated&per_page=100')
-    .then(r => r.ok ? r.json() : Promise.reject())
-    .then(d => { if (Array.isArray(d) && d.length) renderRepos(d); })
-    .catch(() => {});
-
 
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
